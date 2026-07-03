@@ -1,0 +1,125 @@
+{
+  "image": "tilesets/map_spire.png",
+  "tileWidth": 48,
+  "tileHeight": 48,
+  "tileSize": 48,
+  "columns": 4,
+  "imageWidth": 192,
+  "imageHeight": 192,
+  "tileCount": 16,
+  "tiles": [
+    {
+      "index": 0,
+      "name": "ash_floor_a",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 1,
+      "name": "ash_floor_b",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 2,
+      "name": "cracked_stone_floor",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 3,
+      "name": "dark_slate_tile",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 4,
+      "name": "stair_step",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 5,
+      "name": "stair_landing",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 6,
+      "name": "spire_wall",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 7,
+      "name": "cracked_spire_wall",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 8,
+      "name": "iron_brazier",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 9,
+      "name": "rubble_pile",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 10,
+      "name": "broken_pillar",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 11,
+      "name": "iron_railing",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 12,
+      "name": "ash_drift",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 13,
+      "name": "engraved_stone",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 14,
+      "name": "scorch_mark",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 15,
+      "name": "dark_pit",
+      "collides": true,
+      "collision": true
+    }
+  ],
+  "placeholder": false,
+  "_note": "collides 는 요청 레이아웃 기준 후보 플래그. 실물 확인 후 core-coder 와 조율.",
+  "generation": {
+    "prompt": "Painterly cel-shaded 2D top-down fantasy RPG art, faded pastel palette, soft rim light and gentle cel-shading, atmospheric fog with aerial perspective, melancholic lonely wistful-wonder mood. Slightly-tilted bird's-eye top-down view for a tile-based game. Muted, low-saturation colors only, no bright primary colors, no glossy or neon highlights. Original dark-fantasy world, not based on any existing franchise. Seamless 48px grid tiles, top-down projection, matte painterly texture, muted palette. Chapter mood: the Ashen Spire, the climax of ruin and self-denial, deep grey and shadow-plum with faint low-saturation ember-red embers, drifting ash instead of fog, the darkest heaviest chapter, no bright flame. Top-down RPG terrain tileset in a strict 4x4 grid of 16 seamless square tiles, filled edge-to-edge, tileable seamless edges, read left-to-right top-to-bottom in this exact order. Row 1: ash-dusted dark stone floor, ashier floor variant, cracked stone floor, dark slate tile. Row 2: stone stair step, stair landing platform, dark spire wall block, cracked spire wall block. Row 3: iron brazier with faint low-saturation ember glow, pile of rubble, broken toppled pillar, iron railing. Row 4: drifting ash on ground, dark stone with an engraved erased name, black scorch mark on stone, dark bottomless pit. Consistent dim ember-tinged lighting across all tiles, no labels, no numbers, no grid lines, no text.",
+    "retries": 0,
+    "postprocess": "resize192x192 (PIL)"
+  },
+  "_seamless_regen": {
+    "reason": "art-director tiling review — base terrain tiles regenerated seamless (center-glow removed, flat low-contrast lighting, edge-wrap blended)",
+    "indices": [
+      0
+    ],
+    "names": [
+      "ash_floor_a"
+    ],
+    "note": "그리드/index/collision/dims 불변, 해당 셀 픽셀만 교체"
+  }
+}

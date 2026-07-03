@@ -1,0 +1,1306 @@
+{
+  "_source": "gdd/dialogue-plan.md@2026-07-03",
+  "_note": "R2 전량 대본 153노드 (§7 카탈로그). 기존 21노드 id·text 보존, next 연장만 발생. 톤: T1 고딕 문어체 + 리엔 독백 약간 현대체(괄호 표기). 신규 노드 유형: panel(전면 CG, panels.json 대응), dlg_react_*(단서 획득 이벤트, trigger.flag=got_<clue_id>), dlg_link_*(링크 확정 이벤트, trigger.flag=링크 id). §11 여유분 ~50노드(메멘토 로어·보너스 회상)는 미결로 이번 주입 범위 아님.",
+  "dialogues": [
+    {
+      "id": "dlg_prologue_01",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_prologue_01",
+      "text": "재의 군주 코르비녹스. 한 세대를 잿더미로 덮은 이름. 세상은 그를 태어날 때부터 괴물이었다고 말한다.",
+      "next": "dlg_prologue_02",
+      "trigger": { "chapter": 1, "flag": "game_start", "once": true }
+    },
+    {
+      "id": "dlg_prologue_02",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_prologue_02",
+      "text": "허나 진실기록원은 그 말을 믿지 않는다. 괴물에게도 시작은 있다. 이름이 있었고, 얼굴이 있었고 — 어쩌면, 사랑이 있었다.",
+      "next": "dlg_prologue_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_prologue_03",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "panel": "cg_prologue_03",
+      "text": "(나는 리엔 벤. 기록관이다. 나의 임무는 심판이 아니라 이해다 — 그가 어떻게 괴물이 되었는가를, 소문이 아닌 남겨진 것들로 되짚는 일.)",
+      "next": "dlg_prologue_04",
+      "trigger": null
+    },
+    {
+      "id": "dlg_prologue_04",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "panel": "cg_prologue_04",
+      "text": "(세 개의 폐허가 그의 생애를 나눠 가졌다. 고아원, 마법원, 그리고 첨탑. 나는 첫 번째 문 앞에 섰다.)",
+      "next": "dlg_intro_01",
+      "trigger": null
+    },
+
+    {
+      "id": "dlg_intro_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "잿골. 재의 군주가 태어난 곳. 이젠 아무도 살지 않는다.",
+      "next": "dlg_intro_02",
+      "trigger": { "chapter": 1, "flag": "game_start", "once": true }
+    },
+    {
+      "id": "dlg_intro_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(진실기록원의 기록관으로서, 나는 한 사람의 시작을 좇아 이곳에 왔다. 그가 어떻게 괴물이 되었는가 — 그 답은 소문이 아니라, 남겨진 것들 속에 있을 것이다.)",
+      "next": "dlg_intro_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_intro_03",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "(주변의 오브젝트를 조사해 단서를 모으고, 추리 보드에서 그것들을 연결하라. 진실은 흩어진 조각의 사이에 있다.)",
+      "next": "dlg_intro_04",
+      "trigger": null
+    },
+    {
+      "id": "dlg_intro_04",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "(방향키로 리엔을 움직여라. 세계는 넓지 않으나, 모든 구석에 무언가가 잠들어 있다.)",
+      "next": "dlg_intro_05",
+      "trigger": null
+    },
+    {
+      "id": "dlg_intro_05",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(빛나는 지점에 다가가 조사하면, 남겨진 것이 말을 걸어온다. 놓친 것이 없는지 눈을 크게 떠야겠다.)",
+      "next": "dlg_intro_06",
+      "trigger": null
+    },
+    {
+      "id": "dlg_intro_06",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "(획득한 단서는 언제든 단서 노트에서 다시 읽을 수 있다. 아직 채우지 못한 자리는 흐릿한 그림자로 남는다.)",
+      "next": "dlg_intro_07",
+      "trigger": null
+    },
+    {
+      "id": "dlg_intro_07",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(단서 두 개가 서로를 부르는 것 같을 때, 추리 보드에서 실로 이어라. 옳게 이으면 흩어졌던 이야기가 한 줄로 떠오를 것이다. …자, 시작하자.)",
+      "next": null,
+      "trigger": null
+    },
+
+    {
+      "id": "dlg_ch1_arrive_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "무너진 대문 너머, 이끼가 삼킨 고아원. 아이들의 웃음이 있었을 자리에 이제 바람만 지난다.",
+      "next": "dlg_ch1_arrive_02",
+      "trigger": { "chapter": 1, "flag": "enter_orphanage", "once": true }
+    },
+    {
+      "id": "dlg_ch1_arrive_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(여기가 첫 장(章)이다. 한 아이가 '저주받았다'고 기록된 곳. 그 기록이 진실인지, 아니면 어른들의 변명인지 — 확인할 차례다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_arrive_03",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(먼저 아이들이 잠들던 침실과, 원장이 모든 것을 적어 내려간 방을 살펴야겠다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "orphanage_hint", "once": true }
+    },
+    {
+      "id": "dlg_ch1_matron_meet",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "폐허 안쪽, 한 노인이 흔들의자에 앉아 있다. 살아 있는 유일한 증인 — 원장 미리엄 코울.",
+      "next": "dlg_miriam_intro_01",
+      "trigger": { "chapter": 1, "flag": "approach_miriam", "once": true }
+    },
+    {
+      "id": "dlg_obj_dorm_bed_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "낡은 침대 밑, 마룻바닥 틈에 무언가 끼어 있다. 서툰 글씨가 적힌 종이 뭉치다.",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "inspect_dorm_bed", "once": true },
+      "reveals_clue": "clue_torn_diary"
+    },
+    {
+      "id": "dlg_obj_matron_desk_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "원장실 책상. 잠긴 서랍 위에 두꺼운 장부가 펼쳐진 채 먼지를 뒤집어쓰고 있다.",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "inspect_matron_desk", "once": true },
+      "reveals_clue": "clue_toby_record"
+    },
+    {
+      "id": "dlg_obj_notice_board_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상 속 게시판. 빛바랜 공문 한 장이 압정에 매달려 흔들린다.",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "flashback_ch1_dorm", "once": false },
+      "reveals_clue": "clue_anika_adoption"
+    },
+    {
+      "id": "dlg_react_torn_diary",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(일기라… '애니카만이 말을 걸어주었다.' 이 아이에게 온기는 단 한 사람이었다는 뜻이다. 그런데 마지막 장이 찢겨 있어. 무언가가 그 온기를 앗아간 걸까.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "got_clue_torn_diary", "once": true }
+    },
+    {
+      "id": "dlg_react_toby_record",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "('저주받은 아이.' …기록관으로서 말하건대, '저주'라는 단어가 나오면 대개 그 뒤엔 이해하기를 포기한 어른이 있다. 이건 설명이 아니라 낙인이다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "got_clue_toby_record", "once": true }
+    },
+    {
+      "id": "dlg_react_miriam_fear",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(벌한 게 아니라 두려워했다… 두려움은 눈을 멀게 한다. 원장은 아이의 상처를 볼 자리에, 자기 공포를 적어 넣은 거야.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "got_clue_miriam_fear", "once": true }
+    },
+    {
+      "id": "dlg_react_anika_adoption",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(입양 통지 발송일이… 사고 사흘 전. 유일한 온기가 떠나고 사흘 뒤 모든 게 무너졌다. 우연이라기엔 날짜가 너무 가깝다. 이 순서가 진실의 열쇠일지 모른다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "got_clue_anika_adoption", "once": true }
+    },
+    {
+      "id": "dlg_miriam_intro_01",
+      "speaker": "char_miriam",
+      "portrait": "miriam_neutral",
+      "text": "낯선 이가 이 폐허에 무슨 볼일이오… 기록관 나리.",
+      "choices": [
+        { "text": "그 아이에 대해 여쭙고 싶습니다.", "next": "dlg_miriam_child_01", "require_clue": null, "reveals_clue": null },
+        { "text": "토비라는 아이의 사고에 대해.", "next": "dlg_miriam_toby_01", "require_clue": "clue_toby_record", "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "met_miriam", "once": true }
+    },
+    {
+      "id": "dlg_miriam_child_01",
+      "speaker": "char_miriam",
+      "portrait": "miriam_sorrow",
+      "text": "그 아이의 이름은… 이 늙은 입으로 다시 담고 싶지 않소. …허나 당신 눈을 보니, 이미 절반은 알고 온 게로군.",
+      "next": "dlg_miriam_child_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_miriam_child_02",
+      "speaker": "char_miriam",
+      "portrait": "miriam_sorrow",
+      "text": "그 아이를 벌한 게 아니오. …나는 그 아이가 무서웠소. 텅 빈 눈으로 나를 올려다볼 때, 이 늙은 뼈가 얼어붙었지.",
+      "next": "dlg_miriam_child_03",
+      "trigger": null,
+      "reveals_clue": "clue_miriam_fear"
+    },
+    {
+      "id": "dlg_miriam_child_03",
+      "speaker": "char_miriam",
+      "portrait": "miriam_sorrow",
+      "text": "허나 이제 와 생각하면… 그 눈은 나를 해하려는 눈이 아니었소. 무언가를 잃고, 그것을 어떻게 담아야 할지 모르는 눈이었지. 나는 그걸 저주라 불렀고.",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_miriam_toby_01",
+      "speaker": "char_miriam",
+      "portrait": "miriam_neutral",
+      "text": "토비… 그래, 그 밤 그 방엔 오직 그 아이만이 무사했지. 나는 그것을 저주라 적었소. 허나 저주가 아니었다면… 나는 무엇을 놓친 것이오?",
+      "next": "dlg_miriam_toby_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_miriam_toby_02",
+      "speaker": "char_miriam",
+      "portrait": "miriam_sorrow",
+      "text": "그 며칠 전이었소. 남부의 가문이 계집아이 하나를 데려갔지. 그 뒤로 카엘은… 말을 잃었소. 나는 그저 시무룩한가 보다 했지. 어리석게도.",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_miriam_return_01",
+      "speaker": "char_miriam",
+      "portrait": "miriam_sorrow",
+      "text": "다 알아냈소, 기록관? …그렇다면 이 늙은이 대신 그 아이에게 전해주오. 무서워한 건 미안했다고. 너무 늦었지만.",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "ch1_deduced", "once": true }
+    },
+    {
+      "id": "dlg_anika_intro_01",
+      "speaker": "char_anika",
+      "portrait": "anika_faint",
+      "text": "(회상 속 목소리) …그 앤 늘 혼자였어요. 내가 손을 내밀면, 세상에서 가장 놀란 얼굴을 했죠. 마치 온기를 처음 만난 것처럼.",
+      "next": "dlg_anika_intro_02",
+      "trigger": { "chapter": 1, "flag": "flashback_ch1_dorm", "once": true }
+    },
+    {
+      "id": "dlg_anika_intro_02",
+      "speaker": "char_anika",
+      "portrait": "anika_faint",
+      "text": "떠나는 날, 나는 작별을 말하지 못했어요. …그 앤 그걸 버림받았다고 여겼을까요. 사흘 뒤, 모든 게 무너졌다고 들었어요.",
+      "next": "dlg_anika_intro_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_anika_intro_03",
+      "speaker": "char_anika",
+      "portrait": "anika_warm",
+      "text": "마차가 떠날 때 창밖으로 봤어요. 그 애가 문간에 서 있었죠. 손을 흔들지도, 울지도 않고. 그냥… 내가 다른 모두처럼 자길 두고 간다는 걸 확인하듯이.",
+      "next": "dlg_anika_bond_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_anika_bond_01",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(아이에게 세상은 애니카 하나로 좁혀져 있었다. 그 하나가 떠났을 때, 세상 전부가 등을 돌린 것과 같았겠지.)",
+      "next": "dlg_anika_leave_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_anika_leave_01",
+      "speaker": "char_anika",
+      "portrait": "anika_faint",
+      "text": "만약 그때 내가 작별 인사만 했더라면… 아니, 손 한 번만 잡아줬더라면. 그 애는 조금은 달라졌을까요. 나는 아직도 그 생각에 잠을 설쳐요.",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_echo_enter_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "침실 한가운데, 공기가 물결처럼 일렁인다. 남겨진 것이 충분히 모이자, 지나간 시간이 되살아나려 한다.",
+      "next": "dlg_ch1_echo_enter_02",
+      "trigger": { "chapter": 1, "flag": "echo_ready_ch1", "once": true }
+    },
+    {
+      "id": "dlg_ch1_echo_enter_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(회상 감응. …눈을 감으면, 이 방이 그날의 온도로 돌아간다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_echo_exit_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상이 흩어진다. 리엔은 다시 폐허의 침묵 속으로 돌아온다. 그러나 손에는 사라지지 않는 조각이 남았다.",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "exit_flashback_ch1", "once": true }
+    },
+    {
+      "id": "dlg_link_ch1_loss",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(일기와 입양 통지가 이어진다 — 애니카는 그의 유일한 온기였고, 그 온기가 떠났다. 이건 단순한 이별이 아니야. 그의 세계가 무너진 지점이다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "link_ch1_loss", "once": true }
+    },
+    {
+      "id": "dlg_link_ch1_timing",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(입양 통지와 사고 기록… 상실이 먼저, 힘이 나중. 순서가 분명하다. 저주가 사고를 부른 게 아니라, 무너짐이 힘을 터뜨린 거다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "link_ch1_timing", "once": true }
+    },
+    {
+      "id": "dlg_link_ch1_label",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(사고 기록과 원장의 두려움이 맞물린다. 어른은 이해할 수 없는 것에 '저주'라는 이름을 붙였다. 낙인은 그렇게 태어났다.)",
+      "next": null,
+      "trigger": { "chapter": 1, "flag": "link_ch1_label", "once": true }
+    },
+    {
+      "id": "dlg_ch1_board_open",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "실이 충분히 이어졌다. 흩어진 조각들이 한 방향을 가리킨다 — 결론을 내릴 때다.",
+      "next": "dlg_ch1_deduce_prompt",
+      "trigger": { "chapter": 1, "flag": "ch1_board_ready", "once": true }
+    },
+    {
+      "id": "dlg_ch1_deduce_prompt",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(카엘이 처음 힘을 휘두른 진짜 계기는 무엇인가?)",
+      "choices": [
+        { "text": "타고난 악의, 저주받은 본성.", "next": "dlg_ch1_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "유일한 온기를 잃은 버림받은 상실감.", "next": "dlg_ch1_deduce_correct", "require_clue": null, "reveals_clue": null },
+        { "text": "자신을 저주라 부른 원장에 대한 복수.", "next": "dlg_ch1_deduce_wrong", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_deduce_wrong",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(…아니야. 단서들이 그렇게 말하지 않는다. 날짜를, 일기를, 그 눈빛을 다시 본다. 무엇이 먼저였는지.)",
+      "next": "dlg_ch1_deduce_prompt",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_deduce_correct",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(그래. 버림받음이었다. 저주가 아니라 상실. 어른들이 두려워 낙인찍은 그 자리에, 실은 온기를 잃고 어쩔 줄 모르는 아이가 있었을 뿐이다.)",
+      "next": "dlg_ch1_epilogue_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_epilogue_01",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep1_01",
+      "text": "그날, 침실의 한 자리가 비었다. 애니카가 쓰던 침대. 카엘은 그 빈자리를 오래도록 바라보았다.",
+      "next": "dlg_ch1_epilogue_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_epilogue_02",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep1_02",
+      "text": "사흘 뒤, 아이들이 그를 둘러싸고 늘 그랬듯 조롱했다. 그러나 이번엔 무언가 달랐다. 텅 빈 가슴에서, 처음으로 그것이 터져 나왔다.",
+      "next": "dlg_ch1_epilogue_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_epilogue_03",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep1_03",
+      "text": "원장은 무너진 방과 다친 토비를 보았다. 그리고 이해하는 대신, 떨리는 손으로 적었다. '저주받은 아이.' — 그렇게 첫 번째 낙인이 새겨졌다.",
+      "next": "dlg_ch1_epilogue_close",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch1_epilogue_close",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(첫 장을 덮는다. 여기까진 상실의 이야기였다. …다음 장은, 그 상실이 무엇으로 자라났는지를 물을 것이다.)",
+      "next": null,
+      "trigger": null
+    },
+
+    {
+      "id": "dlg_ch2_arrive_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "안개에 잠긴 첨탑들. 한때 최고의 마법원이었던 미스트미어. 지금은 무너진 강의실마다 지식의 재만 쌓였다.",
+      "next": "dlg_ch2_arrive_02",
+      "trigger": { "chapter": 2, "flag": "enter_academy", "once": true }
+    },
+    {
+      "id": "dlg_ch2_arrive_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(상실한 아이가 여기서 무엇이 되었나. 세상은 '야심 많은 문제아'라 기록했다. 나는 그 한 단어가 무엇을 덮고 있는지 파헤쳐야 한다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_arrive_03",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(기록실의 공문, 중앙 홀의 명단, 그리고 그가 홀로 앉던 자리. 두 사람이 아직 이 폐허를 떠나지 못하고 있다 — 교수와, 옛 동급생.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "academy_hint", "once": true }
+    },
+    {
+      "id": "dlg_ch2_meet_intro",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "무너진 강의실 문 앞. 백발의 노교수가 빈 강단을 응시하고 있다. 오르넬리아 세이지.",
+      "next": "dlg_ornelia_intro_01",
+      "trigger": { "chapter": 2, "flag": "approach_ornelia", "once": true }
+    },
+    {
+      "id": "dlg_obj_archive_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "기록실 서가. 처분 기록이 묶인 장부에서, 한 이름이 붉은 밑줄과 함께 반복된다.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "inspect_archive", "once": true },
+      "reveals_clue": "clue_forbidden_record"
+    },
+    {
+      "id": "dlg_obj_burnt_desk_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "카엘의 자습실. 책상 위에 반쯤 타버린 종이가 재에 눌어붙어 있다. 겨우 몇 글자가 읽힌다.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "inspect_burnt_desk", "once": true },
+      "reveals_clue": "clue_scorched_oath"
+    },
+    {
+      "id": "dlg_obj_bulletin_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "중앙 홀 게시판. 해마다의 수석 명단이 켜켜이 붙어 있다. 모든 해의 첫 줄이 같은 이름이다.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "inspect_bulletin", "once": true },
+      "reveals_clue": "clue_top_marks"
+    },
+    {
+      "id": "dlg_obj_corner_wall_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상 속 강의실 가장 구석. 벽에 손톱으로 그은 무수한 금이 새겨져 있다. 날 수를 세듯이.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "flashback_ch2_hall", "once": false },
+      "reveals_clue": "clue_isolation_corner"
+    },
+    {
+      "id": "dlg_obj_hidden_shelf_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상 속 금서 구역. 숨겨진 책장 뒤, 촘촘한 필기로 가득한 노트 한 권이 떨어져 있다.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "flashback_ch2_library", "once": false },
+      "reveals_clue": "clue_banned_notes"
+    },
+    {
+      "id": "dlg_ch2_echo_enter_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "강의실의 먼지가 거꾸로 떠오른다. 회상 감응 — 이 자리가 아직 사람으로 붐비던 시절로.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "echo_ready_ch2", "once": true }
+    },
+    {
+      "id": "dlg_react_forbidden_record",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "('야심이 과한 문제아'라… 편리한 말이군. 왜 갔는지, 무엇을 찾았는지는 한 줄도 없다. 학교는 사건을 봉인했을 뿐, 이해하려 하지 않았다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_forbidden_record", "once": true }
+    },
+    {
+      "id": "dlg_react_ornelia_regret",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(재능은 보았으나 그늘은 못 본 척했다… 또 한 명의 어른이 그를 절반만 보았다. 빛나는 절반만. 이건 챕터1의 원장과 같은 실수의 반복이다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_ornelia_regret", "once": true }
+    },
+    {
+      "id": "dlg_react_silas_contempt",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "('재의 개.' …멸시에도 종류가 있다. 이건 그의 출신을 겨냥한, 벗어날 수 없는 종류다. 이런 말은 사람을 바꾼다. 대개 나쁜 쪽으로.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_silas_contempt", "once": true }
+    },
+    {
+      "id": "dlg_react_scorched_oath",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "('다시는 약해지지 않겠다. 다시는 잊혀지지 않겠다.' 멸시에 대한 대답을 종이에 새긴 거다. 그런데 '잊혀지지 않겠다'… 약함의 두려움이 벌써 다른 것으로 번지고 있어.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_scorched_oath", "once": true }
+    },
+    {
+      "id": "dlg_react_top_marks",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(모든 해의 첫 줄, 같은 이름. 그런데 곁엔 축하의 낙서 하나 없이 지운 자국뿐이다. 정상은 이렇게 외로운 자리였구나. 오를수록 혼자가 되는.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_top_marks", "once": true }
+    },
+    {
+      "id": "dlg_react_banned_notes",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "('잊혀지는 것이 죽음보다 두렵다.' …여기 있다. 그를 금서로 이끈 건 야심이 아니었어. 사라짐에 대한 공포다. 애니카가 떠났듯, 자신도 사라질까 봐.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_banned_notes", "once": true }
+    },
+    {
+      "id": "dlg_react_isolation_corner",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(가장 구석, 날 수를 센 손톱자국. 누구도 곁에 앉지 않았다. 재능이 눈부실수록 그 자리는 더 시렸겠지. 이 금 하나하나가 견딘 하루다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "got_clue_isolation_corner", "once": true }
+    },
+    {
+      "id": "dlg_ornelia_intro_01",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_neutral",
+      "text": "재의 군주라… 내겐 그저 강의실 맨 앞줄의, 너무 빨리 자라버린 아이였소.",
+      "choices": [
+        { "text": "그의 재능은 어떠했습니까?", "next": "dlg_ornelia_talent_01", "require_clue": null, "reveals_clue": null },
+        { "text": "왜 그를 막지 않으셨습니까.", "next": "dlg_ornelia_regret_01", "require_clue": "clue_top_marks", "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "met_ornelia", "once": true }
+    },
+    {
+      "id": "dlg_ornelia_talent_01",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_neutral",
+      "text": "눈부셨소. 그 아이 앞에서는 어떤 마법도 겸손해졌지. 허나 재능이란… 곁에 아무도 없으면 저 홀로 타오르다 재가 되는 법이오.",
+      "next": "dlg_ornelia_talent_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ornelia_talent_02",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_sorrow",
+      "text": "다른 아이들은 그를 시샘하거나 두려워했소. 나는 그걸 알면서도, 그의 재능을 키우는 데만 골몰했지. 그 아이에게 필요한 건 스승이 아니라 곁이었을 텐데.",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ornelia_regret_01",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_sorrow",
+      "text": "나는 그 아이의 재능을 보았소. …그 그늘은 보지 못한 척했지. 두려웠던 게요. 그 아이가 아니라… 그 아이를 잃는 것이.",
+      "next": "dlg_ornelia_regret_02",
+      "trigger": null,
+      "reveals_clue": "clue_ornelia_regret"
+    },
+    {
+      "id": "dlg_ornelia_regret_02",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_sorrow",
+      "text": "금서 구역 사건 뒤, 나는 그를 불렀어야 했소. 벌이 아니라 손을 내밀었어야 했지. 허나 나는 처분서에 서명만 하고 돌아섰소. 그날의 등을, 나는 평생 잊지 못하오.",
+      "next": "dlg_ornelia_regret_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ornelia_regret_03",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(재능을 알아본 눈이 외로움은 외면했다. 아이를 키운 건 절반의 사랑이었고, 절반의 방치였다. 그 방치가 그늘을 키웠다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ornelia_return_01",
+      "speaker": "char_ornelia",
+      "portrait": "ornelia_sorrow",
+      "text": "알아냈소, 기록관? …그렇다면 부디 기록해주오. 그 아이를 망친 건 재능이 아니라, 재능만 보고 사람을 보지 못한 우리들이었다고.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "ch2_deduced", "once": true }
+    },
+    {
+      "id": "dlg_silas_intro_01",
+      "speaker": "char_silas",
+      "portrait": "silas_scorn",
+      "text": "카엘 도른? …흥. 고아 주제에 수석이라니. 우린 그를 '재의 개'라 불렀지.",
+      "choices": [
+        { "text": "당신들이 그를 그렇게 만든 겁니까?", "next": "dlg_silas_contempt_01", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "met_silas", "once": true }
+    },
+    {
+      "id": "dlg_silas_contempt_01",
+      "speaker": "char_silas",
+      "portrait": "silas_uneasy",
+      "text": "그가 그런 눈을 하게 만든 게 우리라고? 웃기지 마시오, 기록관. …허나. 그 눈을 마지막으로 본 밤은, 아직도 꿈에 나오는군.",
+      "next": "dlg_silas_contempt_02",
+      "trigger": null,
+      "reveals_clue": "clue_silas_contempt"
+    },
+    {
+      "id": "dlg_silas_contempt_02",
+      "speaker": "char_silas",
+      "portrait": "silas_uneasy",
+      "text": "우린 매일 그를 짓밟았소. 재미로. 그가 아무리 뛰어나도, 출신만은 어쩌지 못한다는 걸 확인하려고. …그게 그 아이에게 무슨 짓이었는지, 그땐 몰랐지.",
+      "next": "dlg_silas_contempt_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_silas_contempt_03",
+      "speaker": "char_silas",
+      "portrait": "silas_uneasy",
+      "text": "한번은 그가 조용히 말했소. '언젠가 너희 중 누구도 나를 잊지 못하게 만들겠다'고. 우린 웃었지. …그 웃음을, 지금은 후회하오.",
+      "next": "dlg_silas_regret_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_silas_regret_01",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "('잊지 못하게 만들겠다.' …멸시가 그를 다른 사람으로 바꾸는 순간이었다. 인정받지 못한 자가 택할 수 있는 마지막 인정, 그것은 공포로 기억되는 것이다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_silas_return_01",
+      "speaker": "char_silas",
+      "portrait": "silas_uneasy",
+      "text": "…다 알아냈다면, 하나만 물읍시다. 우리가 조금만 달랐다면, 그는 괴물이 되지 않았겠소? …아니, 대답하지 마시오. 두려우니까.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "ch2_deduced", "once": true }
+    },
+    {
+      "id": "dlg_ch2_echo_library_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "금서 구역. 촛불 하나가 어둠을 겨우 밀어낸다. 회상 속 카엘이 책장 사이에 웅크려 무언가를 필사하고 있다.",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "flashback_ch2_library", "once": true }
+    },
+    {
+      "id": "dlg_kael_ch2_flashback_01",
+      "speaker": "char_kael",
+      "portrait": "kael_youth",
+      "text": "(회상) 소멸이라니. 우스운 일이지. 사람들은 죽음을 두려워한다면서, 매일 서로를 잊어. 나는 잊히지 않을 거야. 그러려면… 이 지식이 필요해.",
+      "next": "dlg_kael_ch2_flashback_02",
+      "trigger": { "chapter": 2, "flag": "flashback_ch2_library", "once": true }
+    },
+    {
+      "id": "dlg_kael_ch2_flashback_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(그의 목소리엔 악의가 없다. 겁에 질린 아이의 논리만 있을 뿐. 잊히는 게 죽음보다 무서운 아이가, 잊히지 않기 위해 금기를 붙든 거다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_link_ch2_summit",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(수석 명단과 구석의 손톱자국이 이어진다. 그는 정상에 섰지만, 정상엔 의자가 하나뿐이었다. 오를수록 곁이 비었다 — 성공이 곧 고립이었다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "link_ch2_summit", "once": true }
+    },
+    {
+      "id": "dlg_link_ch2_scorn",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(멸시의 증언과 불탄 맹세가 맞물린다. '재의 개'라는 조롱이 '다시는 약해지지 않겠다'는 맹세로 굳었다. 그들의 침이 그의 갑옷이 된 셈이다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "link_ch2_scorn", "once": true }
+    },
+    {
+      "id": "dlg_link_ch2_neglect",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(교수의 회한과 고립의 자리가 이어진다. 그늘을 못 본 척한 스승, 아무도 앉지 않은 자리. 어른의 방치가 아이의 외로움을 방부 처리했다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "link_ch2_neglect", "once": true }
+    },
+    {
+      "id": "dlg_link_ch2_fear",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(맹세와 금지된 노트가 이어진다. '잊혀지지 않겠다'가 '소멸을 거스르겠다'로 자랐다. 약함의 두려움이 죽음의 두려움으로 — 공포가 몸집을 불린 거다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "link_ch2_fear", "once": true }
+    },
+    {
+      "id": "dlg_link_ch2_motive",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(공식 처분 기록과 진짜 노트가 이어진다. 학교는 '야심'이라 적었지만, 노트는 '공포'라 말한다. 표면과 진실의 간극이 이제 완전히 드러났다.)",
+      "next": null,
+      "trigger": { "chapter": 2, "flag": "link_ch2_motive", "once": true }
+    },
+    {
+      "id": "dlg_ch2_board_open",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "실이 촘촘히 엮였다. 야심이라는 가면 아래, 다른 얼굴이 떠오른다. 결론을 내릴 때다.",
+      "next": "dlg_ch2_deduce_prompt",
+      "trigger": { "chapter": 2, "flag": "ch2_board_ready", "once": true }
+    },
+    {
+      "id": "dlg_ch2_deduce_prompt",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(카엘을 금지된 지식으로 이끈 핵심 동기는 무엇인가?)",
+      "choices": [
+        { "text": "순수한 학문적 야심.", "next": "dlg_ch2_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "세이지 교수를 넘어서려는 경쟁심.", "next": "dlg_ch2_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "소멸(잊혀짐)에 대한 공포와, 인정받지 못한 분노.", "next": "dlg_ch2_deduce_correct", "require_clue": null, "reveals_clue": null },
+        { "text": "실라스에 대한 복수심.", "next": "dlg_ch2_deduce_wrong", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_deduce_wrong",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(…표면에 속지 마라. 노트에 그가 직접 쓴 말이 있었다. 무엇이 죽음보다 두렵다고 했던가.)",
+      "next": "dlg_ch2_deduce_prompt",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_deduce_correct",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(그래. 공포였다. 잊히는 것에 대한 공포, 인정받지 못한 분노. 야심이라는 말은 어른들이 자기 방치를 덮으려 고른 단어였을 뿐이다.)",
+      "next": "dlg_ch2_epilogue_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_epilogue_01",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep2_01",
+      "text": "해마다 그의 이름이 명단 맨 위에 올랐다. 그러나 그 이름을 축하하러 온 이는 없었다. 그는 홀로 명단을 올려다보았다. 정상은 텅 비어 있었다.",
+      "next": "dlg_ch2_epilogue_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_epilogue_02",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep2_02",
+      "text": "멸시가 쌓일수록 그는 더 깊이 파고들었다. 금서 구역, 촛불 하나에 의지해 소멸을 거스르는 법을 필사했다. 잊히지 않기 위해서였다.",
+      "next": "dlg_ch2_epilogue_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_epilogue_03",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep2_03",
+      "text": "어느 밤, 그는 낡은 서약서를 불태웠다. '다시는 약해지지 않겠다.' 불길 속에서 소년은 조금 더 사라지고, 무언가 차가운 것이 그 자리를 채웠다.",
+      "next": "dlg_ch2_epilogue_close",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch2_epilogue_close",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(두 번째 장을 덮는다. 상실이 공포로 자랐다. 이제 남은 건 마지막 질문 — 그 공포가 어떻게 한 사람의 이름마저 삼켰는가.)",
+      "next": null,
+      "trigger": null
+    },
+
+    {
+      "id": "dlg_ch3_arrive_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "잿빛 첨탑. 하늘을 찌르는 검은 탑. 세상이 '재의 군주의 탄생지'라 부르는 곳. 그러나 탄생은 언제나 무언가의 죽음을 대가로 한다.",
+      "next": "dlg_ch3_arrive_02",
+      "trigger": { "chapter": 3, "flag": "enter_spire", "once": true }
+    },
+    {
+      "id": "dlg_ch3_arrive_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(마지막 장이다. 공포에 사로잡힌 청년이, 어떻게 이름조차 버린 괴물이 되었나. 그리고 — 왜 하필 이름이었나.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_arrive_03",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(계단참의 편지, 봉인문의 부적. 그리고 이 탑엔 아직 한 사람의 기억이 맴돈다 — 끝까지 그를 놓지 않았던 이.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "spire_hint", "once": true }
+    },
+    {
+      "id": "dlg_ch3_meet_intro",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "계단 위, 희미한 형상이 난간에 기대어 있다. 슬픔이 사람의 모양으로 남은 것 같은 — 이졸데 베일의 기억.",
+      "next": "dlg_isolde_intro_01",
+      "trigger": { "chapter": 3, "flag": "approach_isolde", "once": true }
+    },
+    {
+      "id": "dlg_obj_letter_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "계단참 구석, 봉인된 편지 한 통이 떨어져 있다. 수신인의 이름 위로 눈물 자국인지 빗물 자국인지가 번져 있다.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "inspect_letter", "once": true },
+      "reveals_clue": "clue_isolde_letter"
+    },
+    {
+      "id": "dlg_obj_seal_door_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "거대한 봉인문. 성스러운 문양이 새겨진 부적이 정확히 반으로 갈라져 있다. 갈라진 방향이… 안쪽에서 바깥으로다.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "inspect_seal_door", "once": true },
+      "reveals_clue": "clue_broken_ward"
+    },
+    {
+      "id": "dlg_obj_name_plate_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상 속 첨탑 꼭대기. 청동 명패에서 '카엘 도른'이 날붙이로 긁혀 지워지고, 그 위에 새 이름이 새겨져 있다.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "flashback_ch3_summit", "once": false },
+      "reveals_clue": "clue_erased_name"
+    },
+    {
+      "id": "dlg_obj_ash_altar_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상 속 잿빛 제단. 재로 그어진 글씨가 아직 흩어지지 않고 남아 있다. 마지막 맹세처럼.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "flashback_ch3_summit", "once": false },
+      "reveals_clue": "clue_final_vow"
+    },
+    {
+      "id": "dlg_react_isolde_letter",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "('이름을 버리지 마.' …이 편지를 쓴 사람은 그가 이름을 버리려 한다는 걸 이미 알고 있었어. 그리고 끝까지 그를 붙잡으려 했다. 부치지도 못한 채.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "got_clue_isolde_letter", "once": true }
+    },
+    {
+      "id": "dlg_react_broken_ward",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(봉인이 안쪽에서 부서졌다. 바깥의 침입이 아니라, 안에 있던 자가 스스로 깬 거다. 세상이 '탄생'이라 부른 그 밤의 사건 — 그건 자해였다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "got_clue_broken_ward", "once": true }
+    },
+    {
+      "id": "dlg_react_erased_name",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(이름을 긁어 지웠다… 카엘 도른을. 이름을 지운다는 건 과거의 자신을 지우는 거다. 상처받을 수 있는 자신을. 그 위에 새긴 다섯 글자가 새 갑옷이었다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "got_clue_erased_name", "once": true }
+    },
+    {
+      "id": "dlg_react_final_vow",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "('잃을 것이 없도록, 사랑할 능력을 먼저 도려낸다.' …여기 있다. 타락의 정체가. 그는 악해지기로 한 게 아니야. 다시는 아프지 않기로 한 거다. 그게 전부다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "got_clue_final_vow", "once": true }
+    },
+    {
+      "id": "dlg_react_isolde_echo",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "('아무것도 잃지 않는 자가 되겠다.' …그의 논리가 완전히 뒤집혔어. 잃는 게 두려워서, 아예 가지지 않기로 한 거다. 사랑을 버리면 잃을 것도 없으니까.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "got_clue_isolde_echo", "once": true }
+    },
+    {
+      "id": "dlg_isolde_intro_01",
+      "speaker": "char_isolde",
+      "portrait": "isolde_faint",
+      "text": "(회상 속 목소리) 세상은 그날 밤을 '재의 군주의 탄생'이라 부르죠. …나는 그것을 한 사람이 스스로를 잃은 밤이라 불러요.",
+      "choices": [
+        { "text": "그를 되돌릴 수 있다고 믿었습니까?", "next": "dlg_isolde_bond_01", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "met_isolde", "once": true }
+    },
+    {
+      "id": "dlg_isolde_bond_01",
+      "speaker": "char_isolde",
+      "portrait": "isolde_plead",
+      "text": "카엘. 이름을 버리지 마. 이름을 버리면… 넌 아무것도 아니게 돼. …나는 그렇게 붙잡았어요.",
+      "next": "dlg_isolde_echo_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_isolde_echo_01",
+      "speaker": "char_isolde",
+      "portrait": "isolde_sorrow",
+      "text": "그런데 그 아이는… 아무것도 아닌 게 아니라고 했어요. 아무것도 잃지 않는 자가 되는 거라고. 그 말이, 그가 내게 남긴 마지막 말이었죠.",
+      "next": "dlg_isolde_after_01",
+      "trigger": null,
+      "reveals_clue": "clue_isolde_echo"
+    },
+    {
+      "id": "dlg_isolde_after_01",
+      "speaker": "char_isolde",
+      "portrait": "isolde_sorrow",
+      "text": "나는 그가 나를 미워해서 떠난 줄 알았어요. 오랜 시간이 지나서야 깨달았죠. …그는 나를 너무 소중히 여겨서, 내가 떠날 그날이 두려워, 먼저 놓아버린 거예요.",
+      "next": "dlg_isolde_after_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_isolde_after_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(먼저 놓아버렸다… 애니카가 그를 떠난 그 상처를, 두 번 다시 겪지 않기 위해. 이번엔 자기가 먼저 떠나는 쪽을 택한 거다. 사랑을 버리는 방식으로.)",
+      "next": "dlg_isolde_after_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_isolde_after_03",
+      "speaker": "char_isolde",
+      "portrait": "isolde_faint",
+      "text": "그러니 기록관님. 부디 그를 태어날 때부터 괴물이었다고 적지 말아주세요. 그는… 너무 많이 사랑받고 싶었던 아이였을 뿐이에요.",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_kael_flashback_01",
+      "speaker": "char_kael",
+      "portrait": "kael_hollow",
+      "text": "아무것도 잃지 않는 자가 되는 거지. 잃을 것이 없으면… 다시는 이렇게 아프지 않을 테니까.",
+      "next": "dlg_kael_flashback_015",
+      "trigger": { "chapter": 3, "flag": "flashback_ch3_summit", "once": true }
+    },
+    {
+      "id": "dlg_kael_flashback_015",
+      "speaker": "char_kael",
+      "portrait": "kael_hollow",
+      "text": "이졸데. 네가 언젠가 떠날 거란 걸 나는 알아. 모두가 그랬으니까. 애니카도, 그 누구도. …그러니 내가 먼저 갈게. 이번엔 내가 버리는 쪽이야.",
+      "next": "dlg_kael_flashback_017",
+      "trigger": null
+    },
+    {
+      "id": "dlg_kael_flashback_017",
+      "speaker": "char_kael",
+      "portrait": "kael_hollow",
+      "text": "(명패를 긁으며) 카엘 도른은 여기서 죽는다. 잃을 것이 있는 이름은 필요 없어. 이제부터 나는 — 코르비녹스. 재만 남은 자.",
+      "next": "dlg_kael_flashback_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_kael_flashback_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(그 밤 이후, 카엘 도른이라는 이름은 어디에도 남지 않았다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_echo_enter_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "첨탑 꼭대기. 바람이 재를 실어 나른다. 회상 감응이 그날 밤의 마지막 순간으로 리엔을 데려간다.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "echo_ready_ch3", "once": true }
+    },
+    {
+      "id": "dlg_ch3_echo_exit_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "회상이 재가 되어 흩어진다. 리엔의 손에 마지막 조각들이 쥐어졌다. 이제 세 시대가 하나로 이어질 차례다.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "exit_flashback_ch3", "once": true }
+    },
+    {
+      "id": "dlg_ch3_isolde_final_echo",
+      "speaker": "char_isolde",
+      "portrait": "isolde_sorrow",
+      "text": "(회상 잔향) 카엘… 네가 이름을 버려도, 나는 널 잊지 않아. 그것만은… 네가 도려낼 수 없어.",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "flashback_ch3_summit", "once": true }
+    },
+    {
+      "id": "dlg_link_ch3_bond",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(편지와 마지막 목소리가 이어진다. 이졸데는 끝까지 그를 붙잡은 단 하나의 손이었다. 그리고 바로 그렇기에, 그가 가장 두려워한 상실이기도 했다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "link_ch3_bond", "once": true }
+    },
+    {
+      "id": "dlg_link_ch3_flee",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(붙잡는 목소리와 도려내는 선언이 맞물린다. '떠나지 마'에 그는 '먼저 버리겠다'로 답했다. 떠날까 두려워, 떠나기를 기다리지 않고 먼저 끊은 거다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "link_ch3_flee", "once": true }
+    },
+    {
+      "id": "dlg_link_ch3_erase",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(지워진 이름과 재의 맹세가 이어진다. 이름을 지운 것과 사랑할 능력을 도려낸 것은 같은 행위였다. 카엘 도른은 사랑할 수 있는 자였고, 그래서 지워졌다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "link_ch3_erase", "once": true }
+    },
+    {
+      "id": "dlg_link_ch3_night",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(부서진 봉인과 새 이름이 이어진다. 그날 밤의 '사건'이 곧 코르비녹스의 탄생이었다. 세상이 본 재앙은, 실은 한 사람이 스스로를 봉인한 순간이었다.)",
+      "next": null,
+      "trigger": { "chapter": 3, "flag": "link_ch3_night", "once": true }
+    },
+    {
+      "id": "dlg_ch3_board_open",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "마지막 실이 손끝에 걸린다. 그날 밤의 진실이 한 줄로 모인다. 결론을 내릴 때다.",
+      "next": "dlg_ch3_deduce_prompt",
+      "trigger": { "chapter": 3, "flag": "ch3_board_ready", "once": true }
+    },
+    {
+      "id": "dlg_ch3_deduce_prompt",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(카엘이 자신의 이름을 버린 이유는 무엇인가?)",
+      "choices": [
+        { "text": "더 강한 이름이 필요해서.", "next": "dlg_ch3_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "부끄러운 과거를 숨기려고.", "next": "dlg_ch3_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "버림받는 고통이 두려워, 먼저 모두를 버리기로 했다.", "next": "dlg_ch3_deduce_correct", "require_clue": null, "reveals_clue": null },
+        { "text": "이졸데를 위험에서 지키려고.", "next": "dlg_ch3_deduce_wrong", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_deduce_wrong",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(…이졸데의 말을 다시 떠올려라. 그가 왜 '먼저' 떠났는지. 무엇을 두 번 겪지 않으려 했는지.)",
+      "next": "dlg_ch3_deduce_prompt",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_deduce_correct",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(그래. 버림받기 전에 버리기로 한 거다. 애니카의 상실을 두 번 겪지 않으려고. 이름을 지운 건, 상처받을 수 있는 자신을 지운 것이었다.)",
+      "next": "dlg_ch3_epilogue_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_epilogue_01",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep3_01",
+      "text": "그날 밤 첨탑 꼭대기, 이졸데가 손을 뻗었다. 그러나 카엘은 돌아보지 않았다. 돌아보면 무너질 것을 알았기에. 봉인이 안쪽에서 갈라졌다.",
+      "next": "dlg_ch3_epilogue_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_epilogue_02",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep3_02",
+      "text": "그는 청동 명패에서 자기 이름을 긁어냈다. 한 획씩, 카엘 도른이 사라졌다. 이름을 지우는 일은, 사랑할 수 있는 자신을 죽이는 일이었다.",
+      "next": "dlg_ch3_epilogue_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_epilogue_03",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_ep3_03",
+      "text": "재로 마지막 맹세를 그었다. '사랑할 능력을 먼저 도려낸다.' 그리고 소년이 있던 자리에, 코르비녹스가 섰다. 이제 그에겐 잃을 것이 없었다.",
+      "next": "dlg_ch3_epilogue_close",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ch3_epilogue_close",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(세 장이 모두 덮였다. 상실, 공포, 자기부정. …이제 이 셋을 하나로 이어, 마지막 질문에 답할 때다. 그는 왜 악해졌는가.)",
+      "next": null,
+      "trigger": null
+    },
+
+    {
+      "id": "dlg_corvinox_final_01",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "(세 개의 진실 — 상실, 공포, 자기부정 — 이 하나의 보드 위에 모였다. 마지막 실을 이어라.)",
+      "next": "dlg_final_board_01",
+      "trigger": { "chapter": "final", "flag": "final_board_open", "once": true }
+    },
+    {
+      "id": "dlg_final_board_01",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(세 챕터가 각기 다른 이야기인 줄 알았다. 그러나 아니었다. 하나의 심장에서 자라난 세 개의 가지였을 뿐.)",
+      "next": "dlg_final_board_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_final_board_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(상실이 첫 가지, 공포가 둘째 가지, 자기부정이 셋째. 이 셋을 잇는 하나의 뿌리를 찾으면 — 마지막 문이 열린다.)",
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_link_final_1",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(상실과 공포가 이어진다. 애니카를 잃은 상처가 '다시는 잃지 않겠다'는 공포로 자랐다. 첫 번째 상실이 모든 것의 씨앗이었다.)",
+      "next": null,
+      "trigger": { "chapter": "final", "flag": "link_final_1", "once": true }
+    },
+    {
+      "id": "dlg_link_final_2",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(공포와 자기부정이 이어진다. 잃지 않는 유일한 길로 그는 '먼저 도려내기'를 택했다. 가지지 않으면 잃을 수도 없다는, 슬픈 계산이었다.)",
+      "next": null,
+      "trigger": { "chapter": "final", "flag": "link_final_2", "once": true }
+    },
+    {
+      "id": "dlg_link_final_3",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(자기부정과 상실이 마침내 맞닿는다. 마지막에 그가 도려낸 것은, 온기를 처음 알았던 그 이름 — 카엘 도른이었다. 원은 그렇게 닫혔다.)",
+      "next": null,
+      "trigger": { "chapter": "final", "flag": "link_final_3", "once": true }
+    },
+    {
+      "id": "dlg_final_deduce_open",
+      "speaker": "narration",
+      "portrait": null,
+      "text": "세 개의 가지가 하나의 뿌리로 모인다. 이제 진실기록원이 답해야 할 마지막 질문만이 남았다.",
+      "next": "dlg_final_deduce_prompt",
+      "trigger": { "chapter": "final", "flag": "final_board_ready", "once": true }
+    },
+    {
+      "id": "dlg_final_deduce_prompt",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(재의 군주 코르비녹스는 — 왜 악해졌는가?)",
+      "choices": [
+        { "text": "악의 본성을 타고났기 때문에.", "next": "dlg_final_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "힘과 권력을 갈망했기 때문에.", "next": "dlg_final_deduce_wrong", "require_clue": null, "reveals_clue": null },
+        { "text": "버림받는 고통이 두려워, 사랑할 능력을 스스로 하나씩 도려냈기 때문에.", "next": "dlg_corvinox_final_02", "require_clue": null, "reveals_clue": null },
+        { "text": "세상에 복수하기 위해서.", "next": "dlg_final_deduce_wrong", "require_clue": null, "reveals_clue": null }
+      ],
+      "next": null,
+      "trigger": null
+    },
+    {
+      "id": "dlg_final_deduce_wrong",
+      "speaker": "char_lyren",
+      "portrait": "lyren_neutral",
+      "text": "(…아니다. 그 어떤 것도 단서와 맞지 않는다. 세 개의 진실을 다시 본다. 상실이 무엇으로, 공포가 무엇으로 이어졌는지.)",
+      "next": "dlg_final_deduce_prompt",
+      "trigger": null
+    },
+    {
+      "id": "dlg_corvinox_final_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(그는 악해지기로 결심한 적이 없다. 버림받는 고통이 두려워, 사랑할 능력을 스스로 하나씩 도려냈을 뿐이다 — 그리고 마지막에 도려낸 것이 자기 이름이었다.)",
+      "next": "dlg_ending_01",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_01",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_end_01",
+      "text": "완성된 보드 위에서, 세 시대의 실이 하나의 중심으로 수렴했다. 흩어졌던 한 사람의 생애가, 마침내 하나의 문장으로 읽혔다.",
+      "next": "dlg_ending_02",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_02",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(나는 심판하러 온 게 아니다. 이해하러 왔다. 그리고 이제 이해한다 — 괴물의 뿌리에, 사랑받고 싶었던 아이가 있었음을.)",
+      "next": "dlg_ending_03",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_03",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_end_02",
+      "text": "현재의 코르비녹스, 그 검은 실루엣 위로 어린 카엘의 얼굴이 투명하게 겹쳐진다. 괴물의 안에, 여전히 그 아이가 웅크리고 있었다.",
+      "next": "dlg_ending_04",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_04",
+      "speaker": "char_corvinox",
+      "portrait": "corvinox_shadow",
+      "text": "…누구냐. 잊힌 이름을 파헤치는 자가. 그 이름은 오래전에 죽었다. 잃을 것이 없는 자에게, 과거란 없다.",
+      "next": "dlg_ending_05",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_05",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "당신은 잃을 것이 없는 게 아니오. 이미 다 잃은 거지. 스스로 도려냈으니까. …그러나 이졸데는 아직 당신을 잊지 않았소. 그것만은, 당신도 도려내지 못했소.",
+      "next": "dlg_ending_06",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_06",
+      "speaker": "char_corvinox",
+      "portrait": "corvinox_shadow",
+      "text": "(침묵.) …그 이름을. 다시는, 내 앞에서 부르지 마라.",
+      "next": "dlg_ending_07",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_07",
+      "speaker": "char_lyren",
+      "portrait": "lyren_soft",
+      "text": "(그의 목소리가 흔들렸다. 아주 잠깐. 도려낸 자리에도, 흉터는 남는 법이다. 어쩌면 그것이 그에게 남은 유일한 인간의 조각일지도.)",
+      "next": "dlg_ending_08",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_08",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_end_03",
+      "text": "리엔은 기록장을 덮었다. 수십 장의 조사 끝에, 마지막 페이지에 남긴 것은 단 한 줄이었다.",
+      "next": "dlg_ending_09",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_09",
+      "speaker": "char_lyren",
+      "portrait": "lyren_grave",
+      "text": "(기록: 그는 악해지기로 결심한 적이 없다. 다만, 다시는 아프지 않으려 했을 뿐이다. — 진실기록원 리엔 벤.)",
+      "next": "dlg_ending_10",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_10",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_end_04",
+      "text": "잿골의 새벽. 안개가 걷히고 희미한 빛이 폐허를 어루만진다. 여전히 쓸쓸하지만, 이제는 이해된 슬픔이다.",
+      "next": "dlg_ending_11",
+      "trigger": null
+    },
+    {
+      "id": "dlg_ending_11",
+      "speaker": "narration",
+      "portrait": null,
+      "panel": "cg_end_04",
+      "text": "— 「재의 군주 기원담」 · 끝 —  (단서 노트에서 못다 이은 이야기를 마저 살펴볼 수 있다.)",
+      "next": null,
+      "trigger": { "chapter": "final", "flag": "game_cleared", "once": true }
+    }
+  ]
+}

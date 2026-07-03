@@ -1,0 +1,16 @@
+{
+  "_source": "gdd/balance.md+systems.md@2026-07-02",
+  "_note": "경량 인벤토리. balance §6 표 원천(열쇠 2 + 수집품 4). 단서 노트(inv_clue_note)는 상시 자동 저널로 별도 UI(clues.json 소비)이며 아이템 목록에는 포함하지 않음. 무게·칸 제한 없음.",
+  "items": [
+    { "id": "key_cellar", "name": "지하실 녹슨 열쇠", "category": "key", "chapter": 1, "role": "고아원 지하 개방", "note": "필수 진행. 비소멸·자동 사용.", "spriteKey": "item_key_cellar" },
+    { "id": "key_seal_ward", "name": "봉인 부적", "category": "key", "chapter": 3, "role": "첨탑 봉인문 해제", "note": "필수 진행. 비소멸·자동 사용.", "spriteKey": "item_key_seal_ward" },
+    { "id": "memento_pebble", "name": "카엘의 조약돌", "category": "memento", "chapter": 1, "role": "로어 수집품, 게임플레이 영향 없음", "note": "도감", "spriteKey": "item_memento_pebble" },
+    { "id": "memento_ribbon", "name": "빛바랜 리본", "category": "memento", "chapter": 2, "role": "로어(애니카 관련) 수집품", "note": "도감", "spriteKey": "item_memento_ribbon" },
+    { "id": "memento_medal", "name": "우등 메달", "category": "memento", "chapter": 2, "role": "로어(실라스 관련) 수집품", "note": "도감", "spriteKey": "item_memento_medal" },
+    { "id": "memento_ash_vial", "name": "재가 담긴 유리병", "category": "memento", "chapter": 3, "role": "로어(타락의 상징) 수집품", "note": "도감", "spriteKey": "item_memento_ash_vial" }
+  ],
+  "collectionBonus": {
+    "requires": ["memento_pebble", "memento_ribbon", "memento_medal", "memento_ash_vial"],
+    "unlocks": "엔딩 후 '조사자의 서재' 보너스 로어 (선택적, 완주율 유인)"
+  }
+}

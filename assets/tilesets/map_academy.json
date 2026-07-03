@@ -1,0 +1,131 @@
+{
+  "image": "tilesets/map_academy.png",
+  "tileWidth": 48,
+  "tileHeight": 48,
+  "tileSize": 48,
+  "columns": 4,
+  "imageWidth": 192,
+  "imageHeight": 192,
+  "tileCount": 16,
+  "tiles": [
+    {
+      "index": 0,
+      "name": "stone_floor_a",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 1,
+      "name": "stone_floor_b",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 2,
+      "name": "ornate_rug",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 3,
+      "name": "marble_tile",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 4,
+      "name": "wood_floor",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 5,
+      "name": "cobblestone_interior",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 6,
+      "name": "stone_wall",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 7,
+      "name": "stone_pillar",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 8,
+      "name": "tall_bookshelf",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 9,
+      "name": "short_bookshelf",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 10,
+      "name": "study_desk",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 11,
+      "name": "wooden_chair",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 12,
+      "name": "candle_stand",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 13,
+      "name": "stained_glass_wall",
+      "collides": true,
+      "collision": true
+    },
+    {
+      "index": 14,
+      "name": "rug_edge",
+      "collides": false,
+      "collision": false
+    },
+    {
+      "index": 15,
+      "name": "arcane_circle_floor",
+      "collides": false,
+      "collision": false
+    }
+  ],
+  "placeholder": false,
+  "_note": "collides 는 요청 레이아웃 기준 후보 플래그. 실물 확인 후 core-coder 와 조율.",
+  "generation": {
+    "prompt": "Painterly cel-shaded 2D top-down fantasy RPG art, faded pastel palette, soft rim light and gentle cel-shading, atmospheric fog with aerial perspective, melancholic lonely wistful-wonder mood. Slightly-tilted bird's-eye top-down view for a tile-based game. Muted, low-saturation colors only, no bright primary colors, no glossy or neon highlights. Original dark-fantasy world, not based on any existing franchise. Seamless 48px grid tiles, top-down projection, matte painterly texture, muted palette. Chapter mood: the Mistmere magic academy interior, candlelight faded-gold warmth against cold forbidden-section shadow, dark muted sage-green and shadow-plum, the duality of light and shade. Top-down RPG terrain tileset in a strict 4x4 grid of 16 seamless square tiles, filled edge-to-edge, tileable seamless edges, read left-to-right top-to-bottom in this exact order. Row 1: polished grey stone floor, darker stone floor variant, muted ornate carpet rug, pale marble floor tile. Row 2: aged wood plank floor, interior cobblestone, solid stone wall block, stone pillar column. Row 3: tall wooden bookshelf full of books, short bookshelf, wooden study desk, empty wooden chair. Row 4: iron candle stand with faint gold flame, dim stained-glass window wall low saturation, patterned rug edge, faded arcane circle drawn on floor. Consistent soft interior lighting across all tiles, no labels, no numbers, no grid lines, no text.",
+    "retries": 0,
+    "postprocess": "resize192x192 (PIL)"
+  },
+  "_seamless_regen": {
+    "reason": "art-director tiling review — base terrain tiles regenerated seamless (center-glow removed, flat low-contrast lighting, edge-wrap blended)",
+    "indices": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "names": [
+      "stone_floor_a",
+      "stone_floor_b",
+      "marble_tile",
+      "cobblestone_interior"
+    ],
+    "note": "그리드/index/collision/dims 불변, 해당 셀 픽셀만 교체"
+  }
+}

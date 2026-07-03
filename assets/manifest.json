@@ -1,0 +1,589 @@
+{
+  "_source": "art/art-bible.md@2026-07-02 (gate3 approved) — rpg-sprite-engineer Phase 4",
+  "_note": "코드가 읽는 계약. 스프라이트는 48x64 프레임 4행(down/left/right/up)x4열(walk 0..3, 0=idle). 타일셋은 48x48 4열 16타일. collidingTiles 는 후보 플래그(실물 확인 후 core-coder 조율).",
+  "characterFrame": {
+    "width": 48,
+    "height": 64
+  },
+  "tileSize": 48,
+  "spriteRows": {
+    "down": 0,
+    "left": 1,
+    "right": 2,
+    "up": 3
+  },
+  "counts": {
+    "sprites": 8,
+    "sprites_placeholder": 0,
+    "tilesets": 3,
+    "tilesets_placeholder": 0,
+    "portraits": 8,
+    "markers": 6,
+    "panels": 17
+  },
+  "sprites": [
+    {
+      "id": "char_anika",
+      "spriteId": "char_anika_sheet",
+      "image": "assets/sprites/char_anika_sheet.png",
+      "sidecar": "assets/sprites/char_anika_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_corvinox",
+      "spriteId": "char_corvinox_sheet",
+      "image": "assets/sprites/char_corvinox_sheet.png",
+      "sidecar": "assets/sprites/char_corvinox_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_isolde",
+      "spriteId": "char_isolde_sheet",
+      "image": "assets/sprites/char_isolde_sheet.png",
+      "sidecar": "assets/sprites/char_isolde_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_kael",
+      "spriteId": "char_kael_sheet",
+      "image": "assets/sprites/char_kael_sheet.png",
+      "sidecar": "assets/sprites/char_kael_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_lyren",
+      "spriteId": "char_lyren_sheet",
+      "image": "assets/sprites/char_lyren_sheet.png",
+      "sidecar": "assets/sprites/char_lyren_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_miriam",
+      "spriteId": "char_miriam_sheet",
+      "image": "assets/sprites/char_miriam_sheet.png",
+      "sidecar": "assets/sprites/char_miriam_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_ornelia",
+      "spriteId": "char_ornelia_sheet",
+      "image": "assets/sprites/char_ornelia_sheet.png",
+      "sidecar": "assets/sprites/char_ornelia_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "char_silas",
+      "spriteId": "char_silas_sheet",
+      "image": "assets/sprites/char_silas_sheet.png",
+      "sidecar": "assets/sprites/char_silas_sheet.json",
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "imageWidth": 192,
+      "imageHeight": 256,
+      "framesPerRow": 4,
+      "rows": {
+        "down": 0,
+        "left": 1,
+        "right": 2,
+        "up": 3
+      },
+      "animations": [
+        "idle_down",
+        "idle_left",
+        "idle_right",
+        "idle_up",
+        "walk_down",
+        "walk_left",
+        "walk_right",
+        "walk_up"
+      ],
+      "placeholder": false
+    }
+  ],
+  "tilesets": [
+    {
+      "id": "map_academy",
+      "image": "assets/tilesets/map_academy.png",
+      "sidecar": "assets/tilesets/map_academy.json",
+      "tileWidth": 48,
+      "tileHeight": 48,
+      "columns": 4,
+      "tileCount": 16,
+      "imageWidth": 192,
+      "imageHeight": 192,
+      "collidingTiles": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "map_orphanage",
+      "image": "assets/tilesets/map_orphanage.png",
+      "sidecar": "assets/tilesets/map_orphanage.json",
+      "tileWidth": 48,
+      "tileHeight": 48,
+      "columns": 4,
+      "tileCount": 16,
+      "imageWidth": 192,
+      "imageHeight": 192,
+      "collidingTiles": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15
+      ],
+      "placeholder": false
+    },
+    {
+      "id": "map_spire",
+      "image": "assets/tilesets/map_spire.png",
+      "sidecar": "assets/tilesets/map_spire.json",
+      "tileWidth": 48,
+      "tileHeight": 48,
+      "columns": 4,
+      "tileCount": 16,
+      "imageWidth": 192,
+      "imageHeight": 192,
+      "collidingTiles": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        15
+      ],
+      "placeholder": false
+    }
+  ],
+  "portraits": [
+    {
+      "id": "char_anika",
+      "portraitId": "char_anika_portrait",
+      "image": "assets/portraits/char_anika_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_corvinox",
+      "portraitId": "char_corvinox_portrait",
+      "image": "assets/portraits/char_corvinox_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_isolde",
+      "portraitId": "char_isolde_portrait",
+      "image": "assets/portraits/char_isolde_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_kael",
+      "portraitId": "char_kael_portrait",
+      "image": "assets/portraits/char_kael_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_lyren",
+      "portraitId": "char_lyren_portrait",
+      "image": "assets/portraits/char_lyren_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_miriam",
+      "portraitId": "char_miriam_portrait",
+      "image": "assets/portraits/char_miriam_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_ornelia",
+      "portraitId": "char_ornelia_portrait",
+      "image": "assets/portraits/char_ornelia_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    },
+    {
+      "id": "char_silas",
+      "portraitId": "char_silas_portrait",
+      "image": "assets/portraits/char_silas_portrait.png",
+      "width": 512,
+      "height": 512,
+      "placeholder": false
+    }
+  ],
+  "markers": [
+    {
+      "id": "marker_clue_document",
+      "image": "assets/sprites/markers/marker_clue_document.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "문서/일기류 단서 (양피지 두루마리+봉랍)",
+      "placeholder": false
+    },
+    {
+      "id": "marker_clue_object",
+      "image": "assets/sprites/markers/marker_clue_object.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "유품/물건 단서 (낡은 장식 소품)",
+      "placeholder": false
+    },
+    {
+      "id": "marker_clue_testimony",
+      "image": "assets/sprites/markers/marker_clue_testimony.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "증언 단서 — NPC 대화/증인 표식 (펼친 양피지+깃펜)",
+      "placeholder": false
+    },
+    {
+      "id": "marker_echo",
+      "image": "assets/sprites/markers/marker_echo.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "회상 지점 — 기억의 메아리 (안개 낀 블루그레이 위스프, 원색 없음)",
+      "placeholder": false
+    },
+    {
+      "id": "marker_item",
+      "image": "assets/sprites/markers/marker_item.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "열쇠/수집품 (빛바랜 금 손잡이 철제 열쇠)",
+      "placeholder": false
+    },
+    {
+      "id": "marker_exit",
+      "image": "assets/sprites/markers/marker_exit.png",
+      "width": 48,
+      "height": 48,
+      "purpose": "출구/이동 지점 (석조 아치 통로)",
+      "placeholder": false
+    }
+  ],
+  "panels": [
+    {
+      "id": "cg_prologue_01",
+      "image": "assets/panels/cg_prologue_01.png",
+      "group": "prologue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "잿빛 하늘 아래 검은 첨탑과 코르비녹스 실루엣, 재가 눈처럼",
+      "placeholder": false
+    },
+    {
+      "id": "cg_prologue_02",
+      "image": "assets/panels/cg_prologue_02.png",
+      "group": "prologue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "진실기록원 서고, 촛불과 봉인 문서 더미",
+      "placeholder": false
+    },
+    {
+      "id": "cg_prologue_03",
+      "image": "assets/panels/cg_prologue_03.png",
+      "group": "prologue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "후드 쓴 리엔 옆모습 클로즈업, 빈 기록장과 깃펜",
+      "placeholder": false
+    },
+    {
+      "id": "cg_prologue_04",
+      "image": "assets/panels/cg_prologue_04.png",
+      "group": "prologue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "안개 속 세 폐허 몽타주와 리엔의 작은 뒷모습",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep1_01",
+      "image": "assets/panels/cg_ep1_01.png",
+      "group": "ch1_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "텅 빈 고아원 침실, 어린 카엘과 애니카의 빈 침대",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep1_02",
+      "image": "assets/panels/cg_ep1_02.png",
+      "group": "ch1_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "조롱하는 그림자들에 둘러싸인 카엘, 첫 마력 폭주",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep1_03",
+      "image": "assets/panels/cg_ep1_03.png",
+      "group": "ch1_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "미리엄이 떨리는 손으로 장부 기록, 잉크 번짐",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep2_01",
+      "image": "assets/panels/cg_ep2_01.png",
+      "group": "ch2_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "수석 명단 위 카엘 이름, 홀로 올려다보는 소년",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep2_02",
+      "image": "assets/panels/cg_ep2_02.png",
+      "group": "ch2_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "금서 구역에서 촛불 하나로 필사하는 카엘, 거대한 벽 그림자",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep2_03",
+      "image": "assets/panels/cg_ep2_03.png",
+      "group": "ch2_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "타오르는 서약서, 불길 속 문장이 재로",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep3_01",
+      "image": "assets/panels/cg_ep3_01.png",
+      "group": "ch3_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "첨탑 꼭대기, 손 뻗는 이졸데와 등 돌린 카엘",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep3_02",
+      "image": "assets/panels/cg_ep3_02.png",
+      "group": "ch3_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "명패 이름을 긁어내는 손 클로즈업, 홈에서 재가",
+      "placeholder": false
+    },
+    {
+      "id": "cg_ep3_03",
+      "image": "assets/panels/cg_ep3_03.png",
+      "group": "ch3_epilogue",
+      "width": 1280,
+      "height": 720,
+      "purpose": "재 덮인 제단, 카엘 형상이 코르비녹스로 뭉개짐",
+      "placeholder": false
+    },
+    {
+      "id": "cg_end_01",
+      "image": "assets/panels/cg_end_01.png",
+      "group": "ending",
+      "width": 1280,
+      "height": 720,
+      "purpose": "완성된 추리 보드, 빛나는 실의 수렴과 리엔 뒷모습",
+      "placeholder": false
+    },
+    {
+      "id": "cg_end_02",
+      "image": "assets/panels/cg_end_02.png",
+      "group": "ending",
+      "width": 1280,
+      "height": 720,
+      "purpose": "코르비녹스 실루엣 위 어린 카엘의 투명한 잔상",
+      "placeholder": false
+    },
+    {
+      "id": "cg_end_03",
+      "image": "assets/panels/cg_end_03.png",
+      "group": "ending",
+      "width": 1280,
+      "height": 720,
+      "purpose": "기록장을 덮는 리엔, 한 줄 적힌 페이지, 사그라드는 촛불",
+      "placeholder": false
+    },
+    {
+      "id": "cg_end_04",
+      "image": "assets/panels/cg_end_04.png",
+      "group": "ending",
+      "width": 1280,
+      "height": 720,
+      "purpose": "잿골 폐허의 새벽, 안개 걷히는 롱숏",
+      "placeholder": false
+    }
+  ],
+  "title": "assets/panels/title_bg.png"
+}

@@ -1,0 +1,63 @@
+{
+  "_source": "gdd/dialogue-plan.md@2026-07-03",
+  "_note": "R2 §4(프롤로그)·§6(에필로그·엔딩) CG 패널 매니페스트. 스키마 = core-coder 확정 계약(setId 고정 키: intro/ch1_conclusion/ch2_conclusion/ch3_conclusion/ending, image nullable → UI 팔레트 폴백). 이미지 경로는 sprite-engineer 실물 규약 assets/panels/{cg_id}.png. 전 이미지 미생산 상태(경로만 예약). text = R2 대본 패널 내레이션. dialogueId = dialogues.json 패널 노드(panel 필드) 1:1 대응 (cg_end_04 는 dlg_ending_10·11 이 공유). §10 은 '패널 15종'이라 표기하나 실제 열거는 17종(4+3+3+3+4) — 열거 전량 주입, 계수는 문서 오기로 보고.",
+  "sets": {
+    "intro": {
+      "panels": [
+        { "image": "assets/panels/cg_prologue_01.png", "text": "재의 군주 코르비녹스. 한 세대를 잿더미로 덮은 이름. 세상은 그를 태어날 때부터 괴물이었다고 말한다.", "dialogueId": "dlg_prologue_01", "cgId": "cg_prologue_01" },
+        { "image": "assets/panels/cg_prologue_02.png", "text": "허나 진실기록원은 그 말을 믿지 않는다. 괴물에게도 시작은 있다. 이름이 있었고, 얼굴이 있었고 — 어쩌면, 사랑이 있었다.", "dialogueId": "dlg_prologue_02", "cgId": "cg_prologue_02" },
+        { "image": "assets/panels/cg_prologue_03.png", "text": "(나는 리엔 벤. 기록관이다. 나의 임무는 심판이 아니라 이해다 — 그가 어떻게 괴물이 되었는가를, 소문이 아닌 남겨진 것들로 되짚는 일.)", "dialogueId": "dlg_prologue_03", "cgId": "cg_prologue_03" },
+        { "image": "assets/panels/cg_prologue_04.png", "text": "(세 개의 폐허가 그의 생애를 나눠 가졌다. 고아원, 마법원, 그리고 첨탑. 나는 첫 번째 문 앞에 섰다.)", "dialogueId": "dlg_prologue_04", "cgId": "cg_prologue_04" }
+      ]
+    },
+    "ch1_conclusion": {
+      "panels": [
+        { "image": "assets/panels/cg_ep1_01.png", "text": "그날, 침실의 한 자리가 비었다. 애니카가 쓰던 침대. 카엘은 그 빈자리를 오래도록 바라보았다.", "dialogueId": "dlg_ch1_epilogue_01", "cgId": "cg_ep1_01" },
+        { "image": "assets/panels/cg_ep1_02.png", "text": "사흘 뒤, 아이들이 그를 둘러싸고 늘 그랬듯 조롱했다. 그러나 이번엔 무언가 달랐다. 텅 빈 가슴에서, 처음으로 그것이 터져 나왔다.", "dialogueId": "dlg_ch1_epilogue_02", "cgId": "cg_ep1_02" },
+        { "image": "assets/panels/cg_ep1_03.png", "text": "원장은 무너진 방과 다친 토비를 보았다. 그리고 이해하는 대신, 떨리는 손으로 적었다. '저주받은 아이.' — 그렇게 첫 번째 낙인이 새겨졌다.", "dialogueId": "dlg_ch1_epilogue_03", "cgId": "cg_ep1_03" }
+      ]
+    },
+    "ch2_conclusion": {
+      "panels": [
+        { "image": "assets/panels/cg_ep2_01.png", "text": "해마다 그의 이름이 명단 맨 위에 올랐다. 그러나 그 이름을 축하하러 온 이는 없었다. 그는 홀로 명단을 올려다보았다. 정상은 텅 비어 있었다.", "dialogueId": "dlg_ch2_epilogue_01", "cgId": "cg_ep2_01" },
+        { "image": "assets/panels/cg_ep2_02.png", "text": "멸시가 쌓일수록 그는 더 깊이 파고들었다. 금서 구역, 촛불 하나에 의지해 소멸을 거스르는 법을 필사했다. 잊히지 않기 위해서였다.", "dialogueId": "dlg_ch2_epilogue_02", "cgId": "cg_ep2_02" },
+        { "image": "assets/panels/cg_ep2_03.png", "text": "어느 밤, 그는 낡은 서약서를 불태웠다. '다시는 약해지지 않겠다.' 불길 속에서 소년은 조금 더 사라지고, 무언가 차가운 것이 그 자리를 채웠다.", "dialogueId": "dlg_ch2_epilogue_03", "cgId": "cg_ep2_03" }
+      ]
+    },
+    "ch3_conclusion": {
+      "panels": [
+        { "image": "assets/panels/cg_ep3_01.png", "text": "그날 밤 첨탑 꼭대기, 이졸데가 손을 뻗었다. 그러나 카엘은 돌아보지 않았다. 돌아보면 무너질 것을 알았기에. 봉인이 안쪽에서 갈라졌다.", "dialogueId": "dlg_ch3_epilogue_01", "cgId": "cg_ep3_01" },
+        { "image": "assets/panels/cg_ep3_02.png", "text": "그는 청동 명패에서 자기 이름을 긁어냈다. 한 획씩, 카엘 도른이 사라졌다. 이름을 지우는 일은, 사랑할 수 있는 자신을 죽이는 일이었다.", "dialogueId": "dlg_ch3_epilogue_02", "cgId": "cg_ep3_02" },
+        { "image": "assets/panels/cg_ep3_03.png", "text": "재로 마지막 맹세를 그었다. '사랑할 능력을 먼저 도려낸다.' 그리고 소년이 있던 자리에, 코르비녹스가 섰다. 이제 그에겐 잃을 것이 없었다.", "dialogueId": "dlg_ch3_epilogue_03", "cgId": "cg_ep3_03" }
+      ]
+    },
+    "ending": {
+      "panels": [
+        { "image": "assets/panels/cg_end_01.png", "text": "완성된 보드 위에서, 세 시대의 실이 하나의 중심으로 수렴했다. 흩어졌던 한 사람의 생애가, 마침내 하나의 문장으로 읽혔다.", "dialogueId": "dlg_ending_01", "cgId": "cg_end_01" },
+        { "image": "assets/panels/cg_end_02.png", "text": "현재의 코르비녹스, 그 검은 실루엣 위로 어린 카엘의 얼굴이 투명하게 겹쳐진다. 괴물의 안에, 여전히 그 아이가 웅크리고 있었다.", "dialogueId": "dlg_ending_03", "cgId": "cg_end_02" },
+        { "image": "assets/panels/cg_end_03.png", "text": "리엔은 기록장을 덮었다. 수십 장의 조사 끝에, 마지막 페이지에 남긴 것은 단 한 줄이었다.", "dialogueId": "dlg_ending_08", "cgId": "cg_end_03" },
+        { "image": "assets/panels/cg_end_04.png", "text": "잿골의 새벽. 안개가 걷히고 희미한 빛이 폐허를 어루만진다. 여전히 쓸쓸하지만, 이제는 이해된 슬픔이다.", "dialogueId": "dlg_ending_10", "cgId": "cg_end_04" }
+      ]
+    }
+  },
+  "_production": {
+    "_note": "rpg-art-director 일러스트 생산 지시 (R2 §4·§6 장면 묘사 원문). 스타일: 게이트3 아트 바이블 '잿빛 여명' — 빛바랜 파스텔·안개·쓸쓸한 경이.",
+    "cg_prologue_01": "잿빛 하늘 아래 홀로 솟은 검은 첨탑, 그 정상에 뭉개진 실루엣의 인물(코르비녹스). 발밑으로 재가 눈처럼 흩날리는 원경",
+    "cg_prologue_02": "진실기록원의 서고 내부. 촛불 아래 수많은 봉인된 문서, 먼지 낀 빛기둥. 경외와 적막",
+    "cg_prologue_03": "후드를 쓴 리엔의 옆모습 클로즈업. 손에 빈 기록장과 깃펜. 눈빛은 냉철하나 어딘가 연민",
+    "cg_prologue_04": "안개 속에 세 폐허(고아원·마법원·첨탑)가 겹쳐 떠오르는 몽타주. 그 앞 문턱에 선 리엔의 작은 뒷모습",
+    "cg_ep1_01": "텅 빈 고아원 침실. 어린 카엘(kael_child)이 애니카가 쓰던 빈 침대를 홀로 바라본다. 창밖은 잿빛",
+    "cg_ep1_02": "카엘을 둘러싸고 조롱하는 아이들의 그림자. 카엘의 눈에서 처음으로 빛과 그림자가 터져 나오는 순간, 공기가 일그러짐",
+    "cg_ep1_03": "원장 미리엄이 떨리는 손으로 장부에 무언가 적는다. 잉크가 번진다. 뒤로 무너진 방과 다친 토비의 실루엣",
+    "cg_ep2_01": "중앙 홀 수석 명단 맨 위 카엘의 이름. 축하하는 이 하나 없이 홀로 명단을 올려다보는 소년(kael_youth)",
+    "cg_ep2_02": "금서 구역 깊은 곳, 촛불 하나에 의지해 금지된 노트를 미친 듯이 필사하는 카엘. 벽엔 그림자가 거대하게 늘어짐",
+    "cg_ep2_03": "책상 위에서 타오르는 서약서. 불길 속에 '다시는 약해지지 않겠다'는 글씨가 재로 스러진다",
+    "cg_ep3_01": "첨탑 꼭대기. 이졸데(isolde_plead)가 손을 뻗지만, 카엘은 등을 돌린 채 어둠 쪽으로 걸어간다. 둘 사이로 봉인이 갈라지는 빛",
+    "cg_ep3_02": "명패의 이름을 날붙이로 긁어내는 카엘의 손 클로즈업. 긁힌 홈에서 재가 흘러나옴",
+    "cg_ep3_03": "재로 뒤덮인 제단 앞, 카엘의 형상이 코르비녹스(corvinox_shadow)의 실루엣으로 뭉개져 간다. 얼굴이 어둠에 잠김",
+    "cg_end_01": "완성된 통합 추리 보드. 세 시대의 단서가 빛나는 실로 하나의 중심으로 수렴한다. 그 앞에 선 리엔의 뒷모습",
+    "cg_end_02": "현재의 코르비녹스 실루엣 위로 어린 카엘(kael_child)의 잔상이 투명하게 겹쳐진다 — 괴물 안의 아이",
+    "cg_end_03": "리엔이 기록장을 덮는다. 페이지엔 단 한 줄이 적혀 있다. 촛불이 사그라든다",
+    "cg_end_04": "잿골 폐허의 새벽. 안개가 걷히고 희미한 빛. 여운의 롱숏 — 여전히 쓸쓸하나, 이해된 슬픔"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "image": "sprites/char_anika_sheet.png",
+  "frameWidth": 48,
+  "frameHeight": 64,
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "walk": {
+    "framesPerDir": 4,
+    "frameRate": 8,
+    "layout": "row-per-direction"
+  },
+  "idle": {
+    "frameIndex": 0
+  },
+  "imageWidth": 192,
+  "imageHeight": 256,
+  "rows": {
+    "down": 0,
+    "left": 1,
+    "right": 2,
+    "up": 3
+  },
+  "framesPerRow": 4,
+  "animations": {
+    "walk_down": {
+      "row": 0,
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frameRate": 8
+    },
+    "idle_down": {
+      "row": 0,
+      "frames": [
+        0
+      ],
+      "frameRate": 1
+    },
+    "walk_left": {
+      "row": 1,
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frameRate": 8
+    },
+    "idle_left": {
+      "row": 1,
+      "frames": [
+        0
+      ],
+      "frameRate": 1
+    },
+    "walk_right": {
+      "row": 2,
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frameRate": 8
+    },
+    "idle_right": {
+      "row": 2,
+      "frames": [
+        0
+      ],
+      "frameRate": 1
+    },
+    "walk_up": {
+      "row": 3,
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "frameRate": 8
+    },
+    "idle_up": {
+      "row": 3,
+      "frames": [
+        0
+      ],
+      "frameRate": 1
+    }
+  },
+  "placeholder": false,
+  "generation": {
+    "prompt": "Painterly cel-shaded 2D top-down fantasy RPG art, faded pastel palette, soft rim light and gentle cel-shading, atmospheric fog with aerial perspective (distant objects desaturate and fade into mist), melancholic lonely wistful-wonder mood. Slightly-tilted bird's-eye top-down view for a tile-based game. Muted, low-saturation colors only, no bright primary colors, no glossy or neon highlights. Original dark-fantasy world, not based on any existing franchise. 3.5 to 4 head-tall proportions, readable costume silhouette, gentle soft shading, thin or no hard outline. Character: Anika, a small orphan girl, worn simple muted-sage (#A8B79B) pinafore dress over a faded cream blouse, short tousled hair, a wistful lonely expression, small and slight, muted palette. Character walk-cycle sprite sheet arranged in a strict 4x4 grid of TALL rectangular cells (portrait aspect, each cell clearly taller than wide). Row 1: walking while facing down toward the viewer. Row 2: walking while facing left. Row 3: walking while facing right. Row 4: walking while facing up away from the viewer. 4 animation frames per row. The character is the same size and centered in every cell with a small margin, full body visible. Uniform flat solid magenta background (#FF00FF) behind everything. No labels, no numbers, no grid lines, no text.",
+    "retries": 0,
+    "postprocess": "bbox-trim+resize192x256+magenta-transparent (PIL)"
+  }
+}
