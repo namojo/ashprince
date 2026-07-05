@@ -95,7 +95,7 @@ window.ART = (function () {
   ];
 
   let W = 0, H = 0;
-  const BG = { stage: -1, sky: null, stars: null, farTile: null, farH: 0, props: [], beam: null };
+  const BG = { stage: -1, sky: null, stars: null, farTile: null, farH: 0, props: [], imgTile: null, imgKey: '' };
 
   function resize(w, h) {
     W = w; H = h;
@@ -252,24 +252,50 @@ window.ART = (function () {
     const gr = g.createLinearGradient(0, 0, 0, H);
     gr.addColorStop(0, p.top); gr.addColorStop(0.5, p.mid); gr.addColorStop(1, p.bot);
     g.fillStyle = gr; g.fillRect(0, 0, W, H);
-    // 병든 달 (사전 렌더)
-    const mx = W * 0.78, my = H * 0.12;
-    const mg = g.createRadialGradient(mx, my, 4, mx, my, 95);
-    mg.addColorStop(0, p.moon + 'cc'); mg.addColorStop(0.3, p.moon + '2a'); mg.addColorStop(1, p.moon + '00');
-    g.fillStyle = mg; g.beginPath(); g.arc(mx, my, 95, 0, 6.283); g.fill();
-    g.fillStyle = p.moon; g.beginPath(); g.arc(mx, my, 24, 0, 6.283); g.fill();
-    g.fillStyle = 'rgba(0,0,0,0.25)';
-    g.beginPath(); g.arc(mx - 7, my - 5, 5, 0, 6.283); g.arc(mx + 8, my + 7, 3.4, 0, 6.283); g.fill();
     BG.sky = c;
   }
 
+  /* ---- 스테이지 일러스트를 어둡게 깔아 미러 타일링으로 스크롤 (스테이지 정체성 + 스크롤 체감) ---- */
+  function buildImgTile(stage) {
+    const key = 'story' + stage;
+    if (!OK[key]) return;
+    const im = IMG[key];
+    const c = document.createElement('canvas');
+    c.width = Math.max(2, W); c.height = Math.max(2, H * 2);
+    const g = c.getContext('2d');
+    const iw = im.naturalWidth, ih = im.naturalHeight;
+    const sc = Math.max(W / iw, H / ih);
+    const dw = iw * sc, dh = ih * sc;
+    const dx = (W - dw) / 2, dy = (H - dh) / 2;
+    g.drawImage(im, dx, dy, dw, dh);           // 위: 원본
+    g.save();                                   // 아래: 상하 반전 (이음새 없는 미러 타일)
+    g.translate(0, H * 2); g.scale(1, -1);
+    g.drawImage(im, dx, dy, dw, dh);
+    g.restore();
+    // 게임 가독성을 위해 어둡게 + 팔레트 톤 정리
+    g.fillStyle = 'rgba(4,4,10,0.60)';
+    g.fillRect(0, 0, W, H * 2);
+    g.globalAlpha = 0.22;
+    g.fillStyle = PAL[stage].bot;
+    g.fillRect(0, 0, W, H * 2);
+    g.globalAlpha = 1;
+    BG.imgTile = c;
+    BG.imgKey = key;
+  }
+
   function ensureStage(stage) {
-    if (BG.stage === stage && BG.sky) return;
+    if (BG.stage === stage && BG.sky) {
+      // 일러스트가 늦게 로드되면 그때 타일 생성
+      if (!BG.imgTile && OK['story' + stage]) buildImgTile(stage);
+      return;
+    }
     BG.stage = stage;
     buildSky(stage);
     buildStars(stage);
     buildFarTile(stage);
     BG.props = stageProps(stage);
+    BG.imgTile = null; BG.imgKey = '';
+    buildImgTile(stage);
   }
 
   /* ---- 배경: 4단 페럴랙스 종스크롤 ---- */
@@ -279,12 +305,20 @@ window.ART = (function () {
     ensureStage(stage);
     const p = PAL[stage];
 
-    // L0 하늘 (고정)
+    // L0 하늘 그라디언트 (고정)
     ctx.drawImage(BG.sky, 0, 0);
+
+    // L0.5 스테이지 일러스트 미러 타일 (0.14x) — 스테이지마다 배경이 완전히 달라진다
+    if (BG.imgTile) {
+      const th2 = H * 2;
+      let ioff = (scrollY * 0.14) % th2;
+      ctx.drawImage(BG.imgTile, 0, ioff - th2);
+      ctx.drawImage(BG.imgTile, 0, ioff);
+    }
 
     // L1 별/입자 (0.1x)
     let off = (scrollY * 0.1) % 512;
-    ctx.globalAlpha = 0.9;
+    ctx.globalAlpha = 0.8;
     ctx.drawImage(BG.stars, 0, off - 512);
     ctx.drawImage(BG.stars, 0, off);
     if (off + 512 < H) ctx.drawImage(BG.stars, 0, off + 512);
@@ -292,14 +326,14 @@ window.ART = (function () {
     // L2 원경 실루엣 (0.25x)
     const fh = BG.farH;
     off = (scrollY * 0.25) % fh;
-    ctx.globalAlpha = 0.85;
+    ctx.globalAlpha = BG.imgTile ? 0.45 : 0.85;
     ctx.drawImage(BG.farTile, 0, off - fh);
     ctx.drawImage(BG.farTile, 0, off);
     if (off + fh < H) ctx.drawImage(BG.farTile, 0, off + fh);
     ctx.globalAlpha = 1;
 
     // L3 중경 소품 (0.6x) — 스크롤 위치에서 결정론적으로 유도 (상태 없음)
-    const SPACING = 170, span = H + 260;
+    const SPACING = 150, span = H + 260;
     const base = Math.floor((scrollY * 0.6 - 200) / SPACING);
     for (let k = base; k < base + Math.ceil(span / SPACING) + 2; k++) {
       const spr = BG.props[Math.floor(h1(k * 3.7) * BG.props.length)];
@@ -308,8 +342,8 @@ window.ART = (function () {
       const py = ((yy % span) + span) % span - 130;
       const side = h1(k * 1.3) < 0.5;
       const px = side ? 10 + h1(k * 2.1) * (W * 0.24) : W - 10 - h1(k * 2.1) * (W * 0.24) - spr.width;
-      const sc = 0.7 + h1(k * 5.3) * 0.65;
-      ctx.globalAlpha = 0.6;
+      const sc = 0.85 + h1(k * 5.3) * 0.75;
+      ctx.globalAlpha = 0.78;
       ctx.drawImage(spr, px, py, spr.width * sc, spr.height * sc);
     }
     ctx.globalAlpha = 1;
@@ -338,12 +372,13 @@ window.ART = (function () {
 
   /* ==================== 캐릭터 공통 ==================== */
   function drawSprite(ctx, key, x, y, size, opt) {
-    // opt: { rot, alpha, flash, bobT }
+    // opt: { rot, alpha, flash, scale }
     if (!OK[key]) return false;
     const im = IMG[key];
     ctx.save();
     ctx.translate(x, y);
     if (opt && opt.rot) ctx.rotate(opt.rot);
+    if (opt && opt.scale && opt.scale !== 1) ctx.scale(opt.scale, opt.scale);
     if (opt && opt.alpha != null) ctx.globalAlpha = opt.alpha;
     ctx.drawImage(im, -size / 2, -size / 2, size, size);
     if (opt && opt.flash > 0 && TINT[key]) {
@@ -403,7 +438,10 @@ window.ART = (function () {
       ctx.globalAlpha = 1;
     }
     const flash = player.hitFlash > 0 && Math.floor(player.hitFlash * 20) % 2 === 0;
-    const useSprite = drawSprite(ctx, 'player', x, y - 4, player.r * 4.4, { flash: flash ? 0.1 : 0, alpha: flash ? 0.75 : 1 });
+    // 이동 방향으로 기울고, 발사 순간 살짝 커지고, 부유하며 미세하게 숨쉰다
+    const lean = Math.max(-0.2, Math.min(0.2, (player.vxSm || 0) * 0.0007));
+    const scale = 1 + (player.wandT > 0 ? 0.05 : 0) + Math.sin(time * 2.2) * 0.015;
+    const useSprite = drawSprite(ctx, 'player', x, y - 4, player.r * 4.4, { flash: flash ? 0.1 : 0, alpha: flash ? 0.75 : 1, rot: lean, scale });
     if (!useSprite) {
       if (flash) ctx.globalAlpha = 0.45;
       drawCloaked(ctx, x, y, 1.5, '#181028', '#d9dfd2', '#ff3b46', true);
@@ -431,16 +469,25 @@ window.ART = (function () {
 
   function drawEnemy(ctx, e, time) {
     const t = e.t || 0;
-    let rot = 0;
-    if (e.type === 'broom') rot = (e.vx > 0 ? 1 : -1) * 0.35 + Math.sin(t * 5) * 0.08;
     const flash = e.hitT > 0;
+    // 상황별 애니메이션: 타입마다 다른 흔들림/기울기/펄스 + 기절 시 휘청임 + 피격 팝
+    let rot = 0, scale = 1, yOff = Math.sin(t * 3 + (e.r || 0)) * 2.5;
+    if (e.type === 'broom') rot = (e.vx > 0 ? 1 : -1) * 0.35 + Math.sin(t * 5) * 0.08;
+    else if (e.type === 'auror') rot = Math.sin(t * 6) * 0.11;
+    else if (e.type === 'order') { rot = Math.sin(t * 1.6) * 0.06; if (e.fireT < 0.22) { rot -= 0.09; scale = 1.05; } }
+    else if (e.type === 'guardian') scale = 1 + Math.sin(t * 3) * 0.05;
+    else if (e.type === 'shielder') { rot = Math.sin(t * 0.9) * 0.05; scale = 1 + Math.sin(time * 3) * 0.03; }
+    else if (e.type === 'splitter') rot = Math.sin(t * (e.gen === 2 ? 9 : 6.5)) * 0.1;
+    else if (e.type === 'sniper') rot = e.aim ? Math.max(-0.32, Math.min(0.32, (e.aim.ang - 1.5708) * 0.3)) : Math.sin(t * 1.4) * 0.05;
+    if (e.stunT > 0) { rot = Math.sin(time * 2.2) * 0.2; yOff += 2; }
+    if (e.hitT > 0) scale *= 1 + e.hitT * 1.6;
 
     if (e.type === 'guardian') {
       const rr = e.r;
       ctx.globalCompositeOperation = 'lighter';
       ctx.drawImage(guardGlow, e.x - rr * 1.7, e.y - rr * 1.7, rr * 3.4, rr * 3.4);
       ctx.globalCompositeOperation = 'source-over';
-      if (!drawSprite(ctx, 'guardian', e.x, e.y, rr * 3.6, { flash: flash ? 0.1 : 0, alpha: 0.92 })) {
+      if (!drawSprite(ctx, 'guardian', e.x, e.y + yOff, rr * 3.6, { flash: flash ? 0.1 : 0, alpha: 0.92, scale })) {
         ctx.strokeStyle = 'rgba(230,250,255,0.85)'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(e.x, e.y, rr * 0.72 + Math.sin(t * 3) * 2, 0, 6.283); ctx.stroke();
         ctx.beginPath();
@@ -449,9 +496,10 @@ window.ART = (function () {
         ctx.stroke();
       }
     } else if (e.type === 'chess') {
-      // 맥고나걸 소환 체스말 — 프로시저럴 룩(성탑)
+      // 맥고나걸 소환 체스말 — 프로시저럴 룩(성탑), 좌우로 뒤뚱거리며 행진
       ctx.save();
-      ctx.translate(e.x, e.y);
+      ctx.translate(e.x, e.y + yOff * 0.4);
+      ctx.rotate(Math.sin(t * 4) * 0.08);
       ctx.fillStyle = flash ? '#e8e8f4' : '#2e2b45';
       ctx.strokeStyle = '#8f88b8'; ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -463,7 +511,7 @@ window.ART = (function () {
       ctx.restore();
     } else {
       const size = e.r * 3.6;
-      if (!drawSprite(ctx, e.type, e.x, e.y, size, { rot, flash: flash ? 0.1 : 0 })) {
+      if (!drawSprite(ctx, e.type, e.x, e.y + yOff, size, { rot, scale, flash: flash ? 0.1 : 0 })) {
         const f = EFALL[e.type] || EFALL.auror;
         ctx.save();
         if (rot) { ctx.translate(e.x, e.y); ctx.rotate(rot); ctx.translate(-e.x, -e.y); }
@@ -573,9 +621,15 @@ window.ART = (function () {
     }
 
     const flash = b.hitT > 0;
+    // 부유 흔들림 + 돌진 방향 기울기 + 2페이즈 고동 + 피격 팝
+    let rot = Math.sin((b.t || 0) * 0.9) * 0.05;
+    if (b.dashing > 0 && b.dashVX) rot = Math.max(-0.3, Math.min(0.3, b.dashVX * 0.0005));
+    let scale = 1 + (b.phase === 2 ? Math.sin(time * 8) * 0.025 : 0);
+    if (b.hitT > 0) scale *= 1 + b.hitT * 1.2;
+    if (b.telegraph > 0) scale *= 1 + b.telegraph * 0.06;
     if (b.dogMode) {
       drawDog(ctx, b.x, b.y, b.r * 1.1, time);
-    } else if (!drawSprite(ctx, b.key, b.x, b.y, b.r * 3.3, { flash: flash ? 0.1 : 0, alpha })) {
+    } else if (!drawSprite(ctx, b.key, b.x, b.y, b.r * 3.3, { flash: flash ? 0.1 : 0, alpha, rot, scale })) {
       const f = BFALL[b.key] || BFALL.moody;
       ctx.globalAlpha = alpha;
       drawCloaked(ctx, b.x, b.y + 8, b.r / 11, f.cloak, '#d8c8ae', f.eye, true);
@@ -605,6 +659,28 @@ window.ART = (function () {
       }
       ctx.globalCompositeOperation = 'source-over';
     }
+  }
+
+  /* ==================== 사망 고스트 (스러지는 잔상) ==================== */
+  function drawGhost(ctx, g) {
+    // g: { key, x, y, size, t, life, rot }
+    if (!OK[g.key]) return false;
+    const p = Math.min(1, g.t / g.life);
+    ctx.save();
+    ctx.translate(g.x, g.y - p * 26);
+    ctx.rotate((g.rot || 0) * p);
+    const s = 1 + p * 0.45;
+    ctx.scale(s, s);
+    ctx.globalAlpha = (1 - p) * 0.7;
+    const im = IMG[g.key];
+    ctx.drawImage(im, -g.size / 2, -g.size / 2, g.size, g.size);
+    if (TINT[g.key]) {
+      ctx.globalAlpha = (1 - p) * 0.5;
+      ctx.drawImage(TINT[g.key], -g.size / 2, -g.size / 2, g.size, g.size);
+    }
+    ctx.restore();
+    ctx.globalAlpha = 1;
+    return true;
   }
 
   /* ==================== 타이틀 / 스토리 배경 ==================== */
@@ -704,7 +780,7 @@ window.ART = (function () {
 
   return {
     load, progress, resize,
-    drawBackground, drawPlayer, drawEnemy, drawBoss, drawStoryBg, drawTitleBg,
+    drawBackground, drawPlayer, drawEnemy, drawBoss, drawGhost, drawStoryBg, drawTitleBg,
     ICONS,
   };
 })();

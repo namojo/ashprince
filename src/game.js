@@ -146,9 +146,22 @@ function skillUnlocked(i) { return Save.data.cleared || Save.data.stage >= SKILL
 /* ==================== [오디오] ==================== */
 
 const Snd = {
-  ctx: null, master: null, bgmGain: null,
+  ctx: null, master: null, bgmGain: null, silentEl: null,
   muted: Save.data.muted, bgmTimer: null, nextBar: 0, barIdx: 0,
   unlock() {
+    // iOS 측면 무음 스위치가 켜져 있으면 Web Audio가 통째로 음소거된다.
+    // Audio Session API(iOS 17+)로 재생 세션을 선언하고,
+    // 구형 iOS 는 무음 <audio> 루프 재생으로 세션을 'playback'으로 전환해 우회한다.
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { /* 미지원 */ }
+    if (!this.silentEl) {
+      // 0.05초 무음 WAV (44.1kHz 8bit mono)
+      const el = document.createElement('audio');
+      el.src = 'data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA';
+      el.loop = true;
+      el.setAttribute('playsinline', '');
+      this.silentEl = el;
+    }
+    if (this.silentEl.paused) this.silentEl.play().catch(() => { /* 제스처 밖 호출 등 — 다음 터치에 재시도 */ });
     if (!this.ctx) {
       const AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return;
@@ -314,8 +327,21 @@ const G = {
   darkmark: null,     // { t, fired }
 };
 
-const enemies = [], bullets = [], ebullets = [], particles = [], texts = [], pickups = [];
+const enemies = [], bullets = [], ebullets = [], particles = [], texts = [], pickups = [], deadFx = [];
 const MAXP = 160, MAXT = 26;
+
+/* 사망 잔상: 스프라이트가 하얗게 번지며 스러진다 */
+function pushGhost(key, x, y, size) {
+  if (deadFx.length >= 10) deadFx.shift();
+  deadFx.push({ key, x, y, size, t: 0, life: 0.38, rot: rand(-0.5, 0.5) });
+}
+
+function updateDeadFx(dt) {
+  for (let i = deadFx.length - 1; i >= 0; i--) {
+    deadFx[i].t += dt;
+    if (deadFx[i].t >= deadFx[i].life) deadFx.splice(i, 1);
+  }
+}
 
 const player = {
   x: 0, y: 0, r: 20,
@@ -323,7 +349,7 @@ const player = {
   fireT: 0, dead: false,
   shieldT: 0, beamT: 0, ringT: 0, ringHit: null,
   snakeT: 0, disarmT: 0,
-  hitFlash: 0, wandT: 0,
+  hitFlash: 0, wandT: 0, vxSm: 0,
 };
 
 function stats() {
@@ -534,6 +560,7 @@ function damageEnemy(e, dmg, isBoss) {
   if (e.hp <= 0) {
     if (isBoss) return killBoss();
     Snd.play('die');
+    if (e.type !== 'chess') pushGhost(e.type, e.x, e.y, e.r * 3.6);
     const col = e.type === 'guardian' ? '#9fd8e8' : (e.type === 'chess' ? '#8f88b8' : '#8a5a9a');
     addParticles(e.x, e.y, 14, col, 160, 0.7, 4);
     addParticles(e.x, e.y, 8, '#7CFF6B', 120, 0.5, 3);
@@ -552,6 +579,7 @@ function damageClone(c, dmg) {
   if (c.hp <= 0) {
     const idx = G.clones.indexOf(c);
     if (idx >= 0) G.clones.splice(idx, 1);
+    pushGhost(c.key, c.x, c.y, c.r * 3.3);
     addParticles(c.x, c.y, 18, '#e07bff', 180, 0.7, 4);
     Snd.play('die');
   }
@@ -559,6 +587,7 @@ function damageClone(c, dmg) {
 
 function killBoss() {
   const b = G.boss; if (!b || player.dead) return;
+  pushGhost(b.key, b.x, b.y, b.r * 3.3);
   G.boss = null;
   G.clones.length = 0;
   G.phoenix = null;
@@ -823,6 +852,7 @@ function updatePlayer(dt) {
   if (player.dead) return;
   const st = stats();
   player.maxhp = st.maxhp;
+  const prevX = player.x;
   if (Input.drag) {
     const dx = Input.tx - player.x, dy = Input.ty - player.y;
     const d = Math.hypot(dx, dy);
@@ -834,6 +864,9 @@ function updatePlayer(dt) {
   }
   player.x = clamp(player.x, 22, W - 22);
   player.y = clamp(player.y, H * 0.32, H - 46);
+  // 이동 기울기 연출용 부드러운 수평 속도
+  const vx = dt > 0 ? (player.x - prevX) / dt : 0;
+  player.vxSm += (vx - player.vxSm) * Math.min(1, dt * 9);
   // 자동 공격 (무장해제 시 정지)
   player.fireT -= dt;
   if (player.fireT <= 0 && player.disarmT <= 0 && (enemies.length || G.clones.length || (G.boss && !G.boss.entering))) {
@@ -1670,7 +1703,7 @@ function updateHUD() {
 
 function resetStageEntities() {
   enemies.length = 0; bullets.length = 0; ebullets.length = 0;
-  particles.length = 0; texts.length = 0; pickups.length = 0;
+  particles.length = 0; texts.length = 0; pickups.length = 0; deadFx.length = 0;
   Spawner.queue = [];
   G.boss = null; G.pending = null; G.shake = 0; G.flash = 0;
   G.clones.length = 0; G.phoenix = null; G.crucioT = 0; G.darkmark = null;
@@ -1863,11 +1896,13 @@ function loop(t) {
     updatePickups(dt);
     updateParticles(dt);
     updateTexts(dt);
+    updateDeadFx(dt);
     checkWaveEnd();
   } else if (G.state === 'over' || G.state === 'victory') {
     G.scrollY += SCROLL_SPD * 0.22 * dt;
     updateParticles(dt);
     updateTexts(dt);
+    updateDeadFx(dt);
   } else if (G.state === 'story') {
     Story.update(dt);
   }
@@ -1891,6 +1926,7 @@ function loop(t) {
   if (showWorld) {
     drawTelegraphs();
     drawSniperAims();
+    for (const g of deadFx) ART.drawGhost(ctx, g);
     for (const e of enemies) ART.drawEnemy(ctx, e, G.time);
     for (const c of G.clones) ART.drawBoss(ctx, c, G.time);
     if (G.boss) ART.drawBoss(ctx, G.boss, G.time);
@@ -1968,7 +2004,10 @@ function bindUI() {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && G.state === 'play') pauseGame();
     // 복귀 시 iOS가 오디오 컨텍스트를 중단 상태로 남겨둘 수 있으므로 재개 시도
-    else if (!document.hidden && Snd.ctx && Snd.ctx.state !== 'running') Snd.ctx.resume();
+    else if (!document.hidden) {
+      if (Snd.ctx && Snd.ctx.state !== 'running') Snd.ctx.resume();
+      if (Snd.silentEl && Snd.silentEl.paused) Snd.silentEl.play().catch(() => {});
+    }
   });
 }
 
